@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+
+  background-image: url("myphoto1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.app {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.7);
+  background-colour:whitesmoke;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #00ffcc;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #1c1c1c;
+  color: yellowgreen;
+  cursor: pointer;
+}
+
+button.active {
+  background: #00ffcc;
+  color: greenyellow;
+}
+
+.main-btn {
+  width: 100%;
+  padding: 15px;
+  background: #00ffcc;
+  color: orangered;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(0,0,0,0.7);
+  border-radius: 10px;
+  color: greenyellow;  
+}
+
+  text-align: left;   
+}
+
+.creator {
+  text-align: left;
+  font-size: 12px;
+  color: greenyellow;  
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 0;
+  animation: fade 20s infinite;
+}
+
+.bg1 {
+  background-image: url("myphoto1.jpg");
+  animation-delay: 0s;
+}
+
+.bg2 {
+  background-image: url("myphoto2.jpg");
+  animation-delay: 4s;
+}
+
+.bg3 {
+  background-image: url("myphoto3.jpg");
+  animation-delay: 8s;
+}
+
+.bg4 {
+  background-image: url("myphoto4.jpg");
+  animation-delay: 12s;
+}
+
+.bg5 {
+  background-image: url("myphoto5.jpg");
+  animation-delay: 14s;
+}
+
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  33% { opacity: 1; }
+  43% { opacity: 0; }
+  100% { opacity: 0; }
+}
