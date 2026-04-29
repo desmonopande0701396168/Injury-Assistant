@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Injury Advisor</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app">
+
+    <h1>Sports Injury Advisor</h1>
+
+    <h3>Select Sport</h3>
+    <div class="options">
+      <button data-type="sport" data-value="Football">Football</button>
+      <button data-type="sport" data-value="Rugby">Rugby</button>
+      <button data-type="sport" data-value="Volleyball">Volleyball</button>
+      <button data-type="sport" data-value="Swimming">Swimming</button>
+      <button data-type="sport" data-value="Handball">Handball</button>
+    </div>
+
+    <h3>Select Injury</h3>
+    <div class="options">
+      <button data-type="injury" data-value="Sprain">Sprain</button>
+      <button data-type="injury" data-value="Strain">Strain</button>
+      <button data-type="injury" data-value="Dislocation">Dislocation</button>
+    </div>
+
+    <h3>Pain Level</h3>
+    <div class="options">
+      <button data-type="pain" data-value="Mild">Mild</button>
+      <button data-type="pain" data-value="Moderate">Moderate</button>
+      <button data-type="pain" data-value="Severe">Severe</button>
+    </div>
+
+    <button id="getAdviceBtn" class="main-btn">Get Advice</button>
+
+    <div id="result" class="result"></div>
+
+    <div id="definitionBox" class="definition"></div>
+
+    <p class="creator">Created by Christopher Opande</p>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

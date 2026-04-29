@@ -1,0 +1,159 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* BODY BACKGROUND SLIDESHOW */
+body {
+  font-family: Arial, sans-serif;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background-image 1.2s ease-in-out;
+
+  min-height: 100vh;
+}
+
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
+}
+
+/* APP CONTAINER (slightly wider for balance) */
+.app {
+  position: relative;
+  z-index: 1;
+
+  width: 90%;
+  max-width: 500px;   /* slightly bigger than before */
+  margin: 40px auto;
+  padding: 15px;
+
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+
+  border-radius: 15px;
+  color: greenyellow;
+}
+
+/* TITLE */
+h1 {
+  text-align: center;
+  color: #00ffcc;
+  margin-bottom: 10px;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+button {
+  flex: 1;
+  padding: 16px;        /* 👈 bigger height */
+  min-height: 50px;     /* 👈 forces taller buttons */
+
+  border: none;
+  border-radius: 10px;
+
+  background: #1c1c1c;
+  color: yellowgreen;
+  cursor: pointer;
+
+  font-size: 15px;      /* 👈 slightly bigger text */
+}
+
+button.active {
+  background: #00ffcc;
+  color: red;
+}
+
+/* MAIN BUTTON */
+.main-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: #00ffcc;
+  color: green;
+
+  border-radius: 10px;
+  border: none;
+}
+
+/* RESULT BOX (BALANCED SIZE) */
+.result {
+  margin-top: 20px;
+  padding: 25px;
+
+  min-height: 250px;
+  max-height: 70vh;
+  width: 100%;
+  overflow-y: auto;
+
+  border-radius: 12px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+
+  color: greenyellow;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* DARK OVERLAY */
+.result::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+/* KEEP TEXT ABOVE */
+.result * {
+  position: relative;
+  z-index: 1;
+}
+
+/* CREATOR */
+.creator {
+  text-align: center;
+  font-size: 12px;
+  color: greenyellow;
+  margin-top: 10px;
+} 
+
+.definition {
+  margin-top: 15px;
+  padding: 20px;
+
+  min-height: 120px;
+  width: 100%;
+
+  border-radius: 12px;
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+
+  color: #00ffcc;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
