@@ -1,4 +1,3 @@
-/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,29 +10,26 @@ body {
   min-height: 100vh;
   position: relative;
 
-  background-color: #000; /* prevents flash */
+  background-color: #000; 
   background-image: url("bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* removed fixed to stop black flash + lag */
   background-attachment: scroll;
 }
 
-/* DARK OVERLAY (so text stays readable but background visible) */
+/* LIGHT OVERLAY (keeps image visible) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
-  /* much lighter overlay so your photo shows clearly */
   background: rgba(0, 0, 0, 0.15);
-
   z-index: 0;
 }
 
-/* APP CONTAINER */
+/* APP CONTAINER (FIXED) */
 .app {
   position: relative;
   z-index: 1;
@@ -43,10 +39,10 @@ body::before {
   margin: 40px auto;
   padding: 15px;
 
-  /* glass effect (transparent but readable) */
-.app {
   background: rgba(255, 255, 255, 0.10);
   backdrop-filter: blur(6px);
+
+  border-radius: 15px;
 }
 
 /* TITLE */
@@ -123,7 +119,7 @@ button.active {
   gap: 10px;
 }
 
-/* RESULT DARK OVERLAY */
+/* RESULT OVERLAY */
 .result::before {
   content: "";
   position: absolute;
@@ -132,7 +128,6 @@ button.active {
   z-index: 0;
 }
 
-/* KEEP TEXT ABOVE OVERLAY */
 .result * {
   position: relative;
   z-index: 1;
@@ -158,7 +153,7 @@ button.active {
   gap: 8px;
 }
 
-/* CREATOR TEXT */
+/* CREATOR */
 .creator {
   text-align: center;
   font-size: 12px;
