@@ -5,43 +5,47 @@
   padding: 0;
 }
 
-/* BODY BACKGROUND SLIDESHOW */
+/* BODY BACKGROUND */
 body {
   margin: 0;
   min-height: 100vh;
+  position: relative;
 
-  background-color: #000; /* fallback so no grey flash */
-
+  background-color: #000; /* prevents flash */
   background-image: url("YOUR-IMAGE.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+
+  /* removed fixed to stop black flash + lag */
+  background-attachment: scroll;
 }
-/* DARK OVERLAY */
+
+/* DARK OVERLAY (so text stays readable but background visible) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 0;
 }
 
-/* APP CONTAINER (slightly wider for balance) */
+/* APP CONTAINER */
 .app {
   position: relative;
   z-index: 1;
 
   width: 90%;
-  max-width: 500px;   /* slightly bigger than before */
+  max-width: 500px;
   margin: 40px auto;
   padding: 15px;
 
- background: rgba(255, 255, 255, 0.15);
-color: non;
-  backdrop-filter: blur(6px);
+  /* glass effect (transparent but readable) */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
 
   border-radius: 15px;
+
   color: greenyellow;
 }
 
@@ -59,10 +63,12 @@ h1 {
   gap: 8px;
   margin-bottom: 10px;
 }
+
+/* BUTTONS */
 button {
   flex: 1;
-  padding: 16px;        /* 👈 bigger height */
-  min-height: 50px;     /* 👈 forces taller buttons */
+  padding: 16px;
+  min-height: 50px;
 
   border: none;
   border-radius: 10px;
@@ -71,7 +77,7 @@ button {
   color: yellowgreen;
   cursor: pointer;
 
-  font-size: 15px;      /* 👈 slightly bigger text */
+  font-size: 15px;
 }
 
 button.active {
@@ -92,7 +98,7 @@ button.active {
   border: none;
 }
 
-/* RESULT BOX (BALANCED SIZE) */
+/* RESULT BOX */
 .result {
   margin-top: 20px;
   padding: 25px;
@@ -117,7 +123,7 @@ button.active {
   gap: 10px;
 }
 
-/* DARK OVERLAY */
+/* RESULT DARK OVERLAY */
 .result::before {
   content: "";
   position: absolute;
@@ -126,20 +132,13 @@ button.active {
   z-index: 0;
 }
 
-/* KEEP TEXT ABOVE */
+/* KEEP TEXT ABOVE OVERLAY */
 .result * {
   position: relative;
   z-index: 1;
 }
 
-/* CREATOR */
-.creator {
-  text-align: center;
-  font-size: 12px;
-  color: greenyellow;
-  margin-top: 10px;
-} 
-
+/* DEFINITION BOX */
 .definition {
   margin-top: 15px;
   padding: 20px;
@@ -157,4 +156,12 @@ button.active {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+/* CREATOR TEXT */
+.creator {
+  text-align: center;
+  font-size: 12px;
+  color: greenyellow;
+  margin-top: 10px;
 }
