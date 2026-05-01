@@ -7,17 +7,17 @@
 
 /* BODY BACKGROUND SLIDESHOW */
 body {
-  font-family: Arial, sans-serif;
+  margin: 0;
+  min-height: 100vh;
 
+  background-color: #000; /* fallback so no grey flash */
+
+  background-image: url("YOUR-IMAGE.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  transition: background-image 5s ease-in-out;
-
-  min-height: 100vh;
+  background-attachment: fixed;
 }
-
 /* DARK OVERLAY */
 body::before {
   content: "";
