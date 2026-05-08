@@ -76,7 +76,7 @@ button {
   font-size: 15px;
 }
 
-button.active {
+button. active {
   background: #00ffcc;
   color: red;
 }
@@ -157,6 +157,6 @@ button.active {
 .creator {
   text-align: center;
   font-size: 12px;
-  color: greenyellow;
+  color: bold black;
   margin-top: 10px;
 }
