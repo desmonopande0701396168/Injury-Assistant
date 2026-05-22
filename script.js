@@ -32,15 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       selected[type] = value;
 
-      /* REMOVE ACTIVE CLASS */
       document
         .querySelectorAll(`button[data-type="${type}"]`)
         .forEach(b => b.classList.remove("active"));
 
-      /* ADD ACTIVE CLASS */
       this.classList.add("active");
 
-      /* SHOW DEFINITIONS */
       if (type === "injury") {
 
         const box = document.getElementById("definitionBox");
@@ -63,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
     Football: {
 
       Sprain: {
-
         causes: [
           "Twisting during tackles",
           "Sudden direction changes",
@@ -76,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Overstretching ligaments",
           "Slipping while running"
         ],
-
         prevention: [
           "Strengthen leg muscles",
           "Proper warm-up before games",
@@ -89,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Stay hydrated",
           "Rest when tired"
         ],
-
         recovery: [
           "Rest immediately",
           "Apply ice regularly",
@@ -105,7 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
 
       Strain: {
-
         causes: [
           "Overrunning muscles",
           "Sudden sprinting",
@@ -118,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Dehydration",
           "Heavy training load"
         ],
-
         prevention: [
           "Warm up properly",
           "Strength training",
@@ -131,7 +123,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Correct footwear",
           "Recovery sessions"
         ],
-
         recovery: [
           "Rest muscles",
           "Ice treatment",
@@ -147,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
       },
 
       Dislocation: {
-
         causes: [
           "Hard tackles",
           "Falls on joints",
@@ -160,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Fatigue",
           "Direct blow"
         ],
-
         prevention: [
           "Strength training",
           "Proper technique",
@@ -173,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Gradual training",
           "Medical checks"
         ],
-
         recovery: [
           "Do NOT relocate joint",
           "Immobilize immediately",
@@ -193,121 +181,68 @@ document.addEventListener("DOMContentLoaded", function () {
     Volleyball: {},
     Swimming: {},
     Handball: {}
-
   };
 
-  /* =========================
-     COPY TEMPLATE TO OTHER SPORTS
-  ========================= */
   function copyTemplate() {
-
     ["Rugby", "Volleyball", "Swimming", "Handball"]
       .forEach(sport => {
-
-        data[sport] =
-          JSON.parse(JSON.stringify(data.Football));
-
+        data[sport] = JSON.parse(JSON.stringify(data.Football));
       });
   }
 
   copyTemplate();
 
   /* =========================
-     GET ADVICE BUTTON
+     GET ADVICE
   ========================= */
-  document
-    .getElementById("getAdviceBtn")
-    .addEventListener("click", function () {
+  document.getElementById("getAdviceBtn").addEventListener("click", function () {
 
-      const resultBox =
-        document.getElementById("result");
+    const resultBox = document.getElementById("result");
 
-      /* CHECK ALL OPTIONS */
-      if (
-        !selected.sport ||
-        !selected.injury ||
-        !selected.pain
-      ) {
+    if (!selected.sport || !selected.injury || !selected.pain) {
+      resultBox.innerHTML = "⚠️ Please select all options.";
+      return;
+    }
 
-        resultBox.innerHTML =
-          "⚠️ Please select all options.";
+    const sportData = data[selected.sport];
+    const info = sportData[selected.injury];
 
-        return;
-      }
+    if (!info) {
+      resultBox.innerHTML = "No injury information found.";
+      return;
+    }
 
-      const sportData =
-        data[selected.sport];
+    let output = `
+      <h2>${selected.sport} ${selected.injury} Advice</h2>
 
-      const info =
-        sportData[selected.injury];
+      <h3>Causes</h3>
+      <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
 
-      /* SAFETY CHECK */
-      if (!info) {
+      <h3>Prevention</h3>
+      <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
 
-        resultBox.innerHTML =
-          "No injury information found.";
+      <h3>Recovery</h3>
+      <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
+    `;
 
-        return;
-      }
+    if (selected.pain === "Severe") {
+      output += `<p style="color:#F97316;">⚠️ Severe: Seek immediate medical attention.</p>`;
+    } else if (selected.pain === "Moderate") {
+      output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor closely.</p>`;
+    } else {
+      output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
+    }
 
-      /* RESULT OUTPUT */
-      let output = `
-        <h2>${selected.sport} ${selected.injury} Advice</h2>
+    resultBox.innerHTML = output;
 
-        <h3>Causes</h3>
-        <ul>
-          ${info.causes.map(c =>
-            `<li>${c}</li>`).join("")}
-        </ul>
-
-        <h3>Prevention</h3>
-        <ul>
-          ${info.prevention.map(p =>
-            `<li>${p}</li>`).join("")}
-        </ul>
-
-        <h3>Recovery</h3>
-        <ul>
-          ${info.recovery.map(r =>
-            `<li>${r}</li>`).join("")}
-        </ul>
-      `;
-
-      /* PAIN LEVEL MESSAGE */
-      if (selected.pain === "Severe") {
-
-        output += `
-          <p style="color:#F97316;">
-            ⚠️ Severe: Seek immediate medical attention.
-          </p>
-        `;
-
-      } else if (selected.pain === "Moderate") {
-
-        output += `
-          <p style="color:#FACC15;">
-            ⚠️ Moderate: Rest and monitor closely.
-          </p>
-        `;
-
-      } else {
-
-        output += `
-          <p style="color:#22C55E;">
-            ✔️ Mild: Home care is fine.
-          </p>
-        `;
-      }
-
-      resultBox.innerHTML = output;
-
-    });
+  });
 
 });
 
 /* =========================
-   BACKGROUND SLIDESHOW
+   BACKGROUND SLIDESHOW (ONLY CHANGES ADDED)
 ========================= */
+
 const images = [
   "myphoto1.jpg",
   "myphoto2.jpg",
@@ -319,6 +254,9 @@ let bgIndex = 0;
 
 function changeBackground() {
 
+  /* ONLY ADDED: smooth transition effect */
+  document.body.style.transition = "background-image 1.5s ease-in-out";
+
   document.body.style.backgroundImage =
     `url('${images[bgIndex]}')`;
 
@@ -326,7 +264,8 @@ function changeBackground() {
     (bgIndex + 1) % images.length;
 }
 
-/* START SLIDESHOW */
+/* START */
 changeBackground();
 
-setInterval(changeBackground, 3000);
+/* CHANGE EVERY 10 SECONDS */
+setInterval(changeBackground, 10000);
