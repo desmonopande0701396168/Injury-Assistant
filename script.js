@@ -10,9 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
      DEFINITIONS
   ========================= */
   const definitions = {
-    Sprain: "A sprain is an injury to ligaments caused by twisting or overstretching of a joint.",
-    Strain: "A strain is an injury to muscles or tendons caused by overuse or overstretching.",
-    Dislocation: "A dislocation happens when a bone is forced out of its normal joint position."
+    Sprain:
+      "A sprain is an injury to ligaments caused by twisting or overstretching of a joint.",
+
+    Strain:
+      "A strain is an injury to muscles or tendons caused by overuse or overstretching.",
+
+    Dislocation:
+      "A dislocation happens when a bone is forced out of its normal joint position."
   };
 
   /* =========================
@@ -27,13 +32,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
       selected[type] = value;
 
-      document.querySelectorAll(`button[data-type="${type}"]`)
+      /* REMOVE ACTIVE CLASS */
+      document
+        .querySelectorAll(`button[data-type="${type}"]`)
         .forEach(b => b.classList.remove("active"));
 
+      /* ADD ACTIVE CLASS */
       this.classList.add("active");
 
+      /* SHOW DEFINITIONS */
       if (type === "injury") {
+
         const box = document.getElementById("definitionBox");
+
         box.innerHTML = `
           <h3>${value}</h3>
           <p>${definitions[value]}</p>
@@ -45,13 +56,14 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* =========================
-     FULL SPORTS DATA (COMPLETE)
+     SPORTS DATA
   ========================= */
   const data = {
 
     Football: {
 
       Sprain: {
+
         causes: [
           "Twisting during tackles",
           "Sudden direction changes",
@@ -64,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Overstretching ligaments",
           "Slipping while running"
         ],
+
         prevention: [
           "Strengthen leg muscles",
           "Proper warm-up before games",
@@ -76,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Stay hydrated",
           "Rest when tired"
         ],
+
         recovery: [
           "Rest immediately",
           "Apply ice regularly",
@@ -91,6 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
 
       Strain: {
+
         causes: [
           "Overrunning muscles",
           "Sudden sprinting",
@@ -103,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Dehydration",
           "Heavy training load"
         ],
+
         prevention: [
           "Warm up properly",
           "Strength training",
@@ -115,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Correct footwear",
           "Recovery sessions"
         ],
+
         recovery: [
           "Rest muscles",
           "Ice treatment",
@@ -130,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
 
       Dislocation: {
+
         causes: [
           "Hard tackles",
           "Falls on joints",
@@ -142,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Fatigue",
           "Direct blow"
         ],
+
         prevention: [
           "Strength training",
           "Proper technique",
@@ -154,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "Gradual training",
           "Medical checks"
         ],
+
         recovery: [
           "Do NOT relocate joint",
           "Immobilize immediately",
@@ -177,53 +197,111 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     AUTO COPY FOOTBALL TEMPLATE
+     COPY TEMPLATE TO OTHER SPORTS
   ========================= */
   function copyTemplate() {
-    ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(sport => {
-      data[sport] = JSON.parse(JSON.stringify(data.Football));
-    });
+
+    ["Rugby", "Volleyball", "Swimming", "Handball"]
+      .forEach(sport => {
+
+        data[sport] =
+          JSON.parse(JSON.stringify(data.Football));
+
+      });
   }
 
   copyTemplate();
 
   /* =========================
-     RESULT BUTTON
+     GET ADVICE BUTTON
   ========================= */
-  document.getElementById("getAdviceBtn").addEventListener("click", function () {
+  document
+    .getElementById("getAdviceBtn")
+    .addEventListener("click", function () {
 
-    if (!selected.sport || !selected.injury || !selected.pain) {
-      document.getElementById("result").innerHTML =
-        "⚠️ Please select all options.";
-      return;
-    }
+      const resultBox =
+        document.getElementById("result");
 
-    const sportData = data[selected.sport];
-    const info = sportData[selected.injury];
+      /* CHECK ALL OPTIONS */
+      if (
+        !selected.sport ||
+        !selected.injury ||
+        !selected.pain
+      ) {
 
-    let output = `
-      <h2>${selected.sport} - ${selected.injury}</h2>
+        resultBox.innerHTML =
+          "⚠️ Please select all options.";
 
-      <h3>Causes</h3>
-      <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
+        return;
+      }
 
-      <h3>Prevention</h3>
-      <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
+      const sportData =
+        data[selected.sport];
 
-      <h3>Recovery</h3>
-      <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
-    `;
+      const info =
+        sportData[selected.injury];
 
-    if (selected.pain === "Severe") {
-      output += `<p style="color:red;">⚠️ Severe: Seek immediate medical attention.</p>`;
-    } else if (selected.pain === "Moderate") {
-      output += `<p style="color:orange;">⚠️ Moderate: Rest and monitor closely.</p>`;
-    } else {
-      output += `<p style="color:lightgreen;">✔️ Mild: Home care is fine.</p>`;
-    }
+      /* SAFETY CHECK */
+      if (!info) {
 
-    document.getElementById("result").innerHTML = output;
-  });
+        resultBox.innerHTML =
+          "No injury information found.";
+
+        return;
+      }
+
+      /* RESULT OUTPUT */
+      let output = `
+        <h2>${selected.sport} ${selected.injury} Advice</h2>
+
+        <h3>Causes</h3>
+        <ul>
+          ${info.causes.map(c =>
+            `<li>${c}</li>`).join("")}
+        </ul>
+
+        <h3>Prevention</h3>
+        <ul>
+          ${info.prevention.map(p =>
+            `<li>${p}</li>`).join("")}
+        </ul>
+
+        <h3>Recovery</h3>
+        <ul>
+          ${info.recovery.map(r =>
+            `<li>${r}</li>`).join("")}
+        </ul>
+      `;
+
+      /* PAIN LEVEL MESSAGE */
+      if (selected.pain === "Severe") {
+
+        output += `
+          <p style="color:#F97316;">
+            ⚠️ Severe: Seek immediate medical attention.
+          </p>
+        `;
+
+      } else if (selected.pain === "Moderate") {
+
+        output += `
+          <p style="color:#FACC15;">
+            ⚠️ Moderate: Rest and monitor closely.
+          </p>
+        `;
+
+      } else {
+
+        output += `
+          <p style="color:#22C55E;">
+            ✔️ Mild: Home care is fine.
+          </p>
+        `;
+      }
+
+      resultBox.innerHTML = output;
+
+    });
 
 });
 
@@ -240,9 +318,15 @@ const images = [
 let bgIndex = 0;
 
 function changeBackground() {
-  document.body.style.backgroundImage = `url('${images[bgIndex]}')`;
-  bgIndex = (bgIndex + 1) % images.length;
+
+  document.body.style.backgroundImage =
+    `url('${images[bgIndex]}')`;
+
+  bgIndex =
+    (bgIndex + 1) % images.length;
 }
 
+/* START SLIDESHOW */
 changeBackground();
+
 setInterval(changeBackground, 3000);
