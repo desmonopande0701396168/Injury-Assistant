@@ -17,16 +17,21 @@ body {
   background-repeat: no-repeat;
 
   font-family: Arial, sans-serif;
+
+  overflow-x: hidden;
 }
 
-/* DARK OVERLAY */
+/* SMOOTH BACKGROUND LAYER */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.70);
+
   z-index: 0;
+
+  transition: opacity 1.5s ease-in-out;
 }
 
 /* APP CONTAINER */
@@ -42,21 +47,26 @@ body::before {
 
   background: rgba(255, 255, 255, 0.08);
 
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
 
   border-radius: 20px;
 
   border: 1px solid rgba(255,255,255,0.1);
+
+  animation: fadeIn 1.5s ease;
 }
 
 /* TITLE */
 h1 {
   text-align: center;
+
   color: #22C55E;
 
   margin-bottom: 15px;
 
   font-size: 32px;
+
+  animation: slideDown 1s ease;
 }
 
 /* SUBHEADINGS */
@@ -97,14 +107,19 @@ button {
   font-size: 15px;
   font-weight: bold;
 
-  transition: 0.3s;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 /* BUTTON HOVER */
 button:hover {
   background: #1D4ED8;
 
-  transform: scale(1.03);
+  transform: translateY(-3px) scale(1.03);
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
 }
 
 /* ACTIVE BUTTON */
@@ -112,6 +127,8 @@ button.active {
   background: #22C55E;
 
   color: white;
+
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
 }
 
 /* MAIN BUTTON */
@@ -155,7 +172,7 @@ button.active {
 
   border-radius: 15px;
 
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 23, 42, 0.85);
 
   color: white;
 
@@ -165,6 +182,8 @@ button.active {
   gap: 10px;
 
   line-height: 1.6;
+
+  animation: fadeIn 1s ease;
 }
 
 /* DEFINITION BOX */
@@ -191,6 +210,8 @@ button.active {
   gap: 8px;
 
   line-height: 1.5;
+
+  animation: fadeIn 1s ease;
 }
 
 /* INFO SECTION */
@@ -212,6 +233,8 @@ button.active {
   color: white;
 
   backdrop-filter: blur(8px);
+
+  animation: fadeInUp 1.5s ease;
 }
 
 .info h2 {
@@ -227,7 +250,7 @@ button.active {
 }
 
 /* CREATOR */
-.creator {Christopher Opande
+.creator {
   text-align: center;
 
   font-size: 13px;
@@ -235,4 +258,73 @@ button.active {
   color: #CBD5E1;
 
   margin-top: 15px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+
+  .app {
+    width: 95%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .result {
+    padding: 18px;
+  }
+
+  .definition {
+    padding: 15px;
+  }
+
+  .info {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
