@@ -4,7 +4,9 @@
   padding: 0;
 }
 
-/* BODY BACKGROUND */
+/* =========================
+   BODY BACKGROUND
+========================= */
 body {
   margin: 0;
   min-height: 100vh;
@@ -19,22 +21,140 @@ body {
   font-family: Arial, sans-serif;
 
   overflow-x: hidden;
+
+  padding-top: 80px; /* space for navbar */
 }
 
-/* SMOOTH BACKGROUND LAYER */
+/* DARK OVERLAY */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
   background: rgba(15, 23, 42, 0.70);
-
   z-index: 0;
-
-  transition: opacity 1.5s ease-in-out;
 }
 
-/* APP CONTAINER */
+/* =========================
+   NAVBAR (DASHBOARD)
+========================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 25px;
+
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+
+  z-index: 1000;
+}
+
+.logo-title {
+  color: #22C55E;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #22C55E;
+}
+
+.nav-links button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+
+  background: #22C55E;
+  color: white;
+
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* =========================
+   LOGIN MODAL
+========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2000;
+}
+
+.modal-box {
+  background: #0F172A;
+
+  padding: 25px;
+
+  border-radius: 15px;
+
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-box h2 {
+  color: #22C55E;
+  text-align: center;
+}
+
+.modal-box input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.modal-box button {
+  background: #22C55E;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* HIDE CLASS */
+.hidden {
+  display: none;
+}
+
+/* =========================
+   APP CONTAINER
+========================= */
 .app {
   position: relative;
   z-index: 1;
@@ -46,7 +166,6 @@ body::before {
   padding: 20px;
 
   background: rgba(255, 255, 255, 0.08);
-
   backdrop-filter: blur(10px);
 
   border-radius: 20px;
@@ -59,20 +178,22 @@ body::before {
 /* TITLE */
 h1 {
   text-align: center;
-
   color: #22C55E;
-
   margin-bottom: 15px;
-
   font-size: 32px;
-
-  animation: slideDown 1s ease;
 }
 
-/* SUBHEADINGS */
+/* SUBTITLE */
+.subtitle {
+  text-align: center;
+  color: #CBD5E1;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* HEADINGS */
 h3 {
   color: #FFFFFF;
-
   margin-top: 15px;
   margin-bottom: 8px;
 }
@@ -81,25 +202,20 @@ h3 {
 .options {
   display: flex;
   flex-wrap: wrap;
-
   gap: 10px;
-
   margin-bottom: 10px;
 }
 
 /* BUTTONS */
 button {
   flex: 1;
-
   padding: 15px;
-
   min-height: 50px;
 
   border: none;
   border-radius: 12px;
 
   background: #2563EB;
-
   color: white;
 
   cursor: pointer;
@@ -107,51 +223,30 @@ button {
   font-size: 15px;
   font-weight: bold;
 
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* BUTTON HOVER */
 button:hover {
   background: #1D4ED8;
-
   transform: translateY(-3px) scale(1.03);
-
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* ACTIVE BUTTON */
 button.active {
   background: #22C55E;
-
-  color: white;
-
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
 }
 
 /* MAIN BUTTON */
 .main-btn {
   width: 100%;
-
   padding: 14px;
-
   margin-top: 15px;
 
   background: #22C55E;
-
-  color: white;
-
   border-radius: 12px;
 
-  border: none;
-
   font-size: 16px;
-  font-weight: bold;
 }
 
-/* MAIN BUTTON HOVER */
 .main-btn:hover {
   background: #16A34A;
 }
@@ -159,59 +254,28 @@ button.active {
 /* RESULT BOX */
 .result {
   margin-top: 20px;
-
   padding: 25px;
 
   min-height: 250px;
 
-  max-height: 70vh;
-
-  width: 100%;
-
-  overflow-y: auto;
+  background: rgba(15, 23, 42, 0.85);
+  color: white;
 
   border-radius: 15px;
 
-  background: rgba(15, 23, 42, 0.85);
-
-  color: white;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 10px;
-
-  line-height: 1.6;
-
-  animation: fadeIn 1s ease;
+  overflow-y: auto;
 }
 
 /* DEFINITION BOX */
 .definition {
   margin-top: 15px;
-
   padding: 20px;
-
-  min-height: 120px;
-
-  width: 100%;
-
-  border-radius: 15px;
 
   background: rgba(255, 255, 255, 0.08);
 
-  backdrop-filter: blur(6px);
+  border-radius: 15px;
 
   color: #E2E8F0;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 8px;
-
-  line-height: 1.5;
-
-  animation: fadeIn 1s ease;
 }
 
 /* INFO SECTION */
@@ -223,41 +287,12 @@ button.active {
   max-width: 700px;
 
   margin: 20px auto;
-
   padding: 20px;
 
   background: rgba(255,255,255,0.08);
-
   border-radius: 20px;
 
   color: white;
-
-  backdrop-filter: blur(8px);
-
-  animation: fadeInUp 1.5s ease;
-}
-
-.info h2 {
-  color: #22C55E;
-
-  margin-bottom: 10px;
-}
-
-.info p {
-  margin-bottom: 20px;
-
-  line-height: 1.7;
-}
-
-/* CREATOR */
-.creator {
-  text-align: center;
-
-  font-size: 13px;
-
-  color: #CBD5E1;
-
-  margin-top: 15px;
 }
 
 /* LOGO */
@@ -265,39 +300,42 @@ button.active {
   display: block;
   width: 90px;
   height: 90px;
-  object-fit: cover;
+
   margin: 0 auto 15px;
+
   border-radius: 50%;
   border: 3px solid #22C55E;
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
 }
 
-/* SUBTITLE */
-.subtitle {
+/* CREATOR */
+.creator {
   text-align: center;
+  font-size: 13px;
   color: #CBD5E1;
-  margin-bottom: 20px;
-  font-size: 15px;
-  line-height: 1.5;
+  margin-top: 15px;
 }
 
 /* DISCLAIMER */
 .disclaimer {
   margin-top: 20px;
   padding: 15px;
+
   background: rgba(245,158,11,0.15);
+
   border-left: 4px solid #F59E0B;
+
   border-radius: 10px;
+
   color: #FDE68A;
-  line-height: 1.6;
-  font-size: 14px;
 }
-/* MOBILE RESPONSIVE */
+
+/* =========================
+   MOBILE
+========================= */
 @media (max-width: 600px) {
 
   .app {
     width: 95%;
-    padding: 15px;
   }
 
   h1 {
@@ -308,55 +346,18 @@ button.active {
     font-size: 14px;
     padding: 12px;
   }
-
-  .result {
-    padding: 18px;
-  }
-
-  .definition {
-    padding: 15px;
-  }
-
-  .info {
-    width: 95%;
-    padding: 15px;
-  }
 }
 
-/* ANIMATIONS */
-
+/* =========================
+   ANIMATIONS
+========================= */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: scale(0.98);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
