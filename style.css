@@ -5,7 +5,7 @@
 }
 
 /* =========================
-   BACKGROUND (DARK + FADED LIKE BEFORE)
+   BACKGROUND (DARK + FADED)
 ========================= */
 body {
   margin: 0;
@@ -24,7 +24,7 @@ body {
   padding-top: 80px;
 }
 
-/* DARK BLUR OVERLAY (STRONGER FADE LIKE YOUR OLD VERSION) */
+/* DARK BLUR OVERLAY */
 body::before {
   content: "";
   position: fixed;
@@ -63,7 +63,7 @@ body::before {
 }
 
 /* =========================
-   BUTTONS (RESTORED ORIGINAL LOOK)
+   BUTTONS (STABLE)
 ========================= */
 button {
   flex: 1;
@@ -71,7 +71,7 @@ button {
   min-height: 50px;
 
   border: none;
-  border-radius: 12px; /* ORIGINAL SHAPE */
+  border-radius: 12px;
 
   background: #2563EB;
   color: white;
@@ -84,13 +84,11 @@ button {
   transition: all 0.3s ease;
 }
 
-/* hover (keep simple like original) */
 button:hover {
   background: #1D4ED8;
   transform: translateY(-2px);
 }
 
-/* active state */
 button.active {
   background: #22C55E;
 }
@@ -125,7 +123,7 @@ button.active {
 }
 
 /* =========================
-   LOGO (FORCE PERFECT CIRCLE FIX)
+   LOGO (FIXED PERFECT CIRCLE)
 ========================= */
 .logo {
   display: block;
@@ -134,8 +132,8 @@ button.active {
 
   margin: 0 auto 15px;
 
-  border-radius: 50%; /* IMPORTANT */
-  object-fit: cover;  /* IMPORTANT FIX */
+  border-radius: 50%;
+  object-fit: cover;
 
   border: 3px solid #22C55E;
   box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
@@ -189,7 +187,38 @@ h1 {
 }
 
 /* =========================
-   MOBILE FIX
+   LOGIN MODAL FIX (IMPORTANT ADDITION)
+========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.75);
+
+  z-index: 9999;
+}
+
+.modal-box {
+  background: #0F172A;
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* =========================
+   MOBILE
 ========================= */
 @media (max-width: 600px) {
   button {
