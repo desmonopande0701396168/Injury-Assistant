@@ -24,36 +24,40 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     BUTTON CLICK HANDLER
+     BUTTON HANDLING (SAFE VERSION)
   ========================= */
-  document.querySelectorAll("button[data-type]").forEach(btn => {
+  const buttons = document.querySelectorAll("button[data-type]");
 
-    btn.addEventListener("click", function () {
+  if (buttons.length > 0) {
+    buttons.forEach(btn => {
 
-      const type = this.dataset.type;
-      const value = this.dataset.value;
+      btn.addEventListener("click", function () {
 
-      selected[type] = value;
+        const type = this.dataset.type;
+        const value = this.dataset.value;
 
-      // remove active class from same group
-      document.querySelectorAll(`button[data-type="${type}"]`)
-        .forEach(b => b.classList.remove("active"));
+        selected[type] = value;
 
-      this.classList.add("active");
+        document.querySelectorAll(`button[data-type="${type}"]`)
+          .forEach(b => b.classList.remove("active"));
 
-      // show definition when injury selected
-      if (type === "injury") {
-        const box = document.getElementById("definitionBox");
+        this.classList.add("active");
 
-        box.innerHTML = `
-          <h3>${value}</h3>
-          <p>${definitions[value]}</p>
-        `;
-      }
+        if (type === "injury") {
+          const box = document.getElementById("definitionBox");
+
+          if (box) {
+            box.innerHTML = `
+              <h3>${value}</h3>
+              <p>${definitions[value]}</p>
+            `;
+          }
+        }
+
+      });
 
     });
-
-  });
+  }
 
   /* =========================
      SPORTS DATA
@@ -61,188 +65,82 @@ document.addEventListener("DOMContentLoaded", function () {
   const data = {
     Football: {
       Sprain: {
-        causes: [
-          "Twisting during tackles",
-          "Sudden direction changes",
-          "Landing awkwardly",
-          "Uneven pitch surfaces",
-          "Weak ankle support",
-          "Fatigue during match",
-          "Poor warm-up",
-          "Direct contact injuries",
-          "Overstretching ligaments",
-          "Slipping while running"
-        ],
-        prevention: [
-          "Strengthen leg muscles",
-          "Proper warm-up before games",
-          "Wear football boots with grip",
-          "Improve balance training",
-          "Avoid overtraining",
-          "Use ankle support if needed",
-          "Stretch regularly",
-          "Train on safe surfaces",
-          "Stay hydrated",
-          "Rest when tired"
-        ],
-        recovery: [
-          "Rest immediately",
-          "Apply ice regularly",
-          "Use compression wrap",
-          "Elevate leg",
-          "Avoid playing early",
-          "Light rehab exercises",
-          "Monitor swelling",
-          "Use pain relief if needed",
-          "Return gradually",
-          "Seek medical help if severe"
-        ]
+        causes: ["Twisting during tackles","Sudden direction changes","Landing awkwardly","Uneven pitch surfaces","Weak ankle support","Fatigue","Poor warm-up","Direct contact","Overstretching ligaments","Slipping"],
+        prevention: ["Strength training","Warm-up","Proper boots","Balance drills","Rest","Support gear","Stretching","Safe surfaces","Hydration","Recovery"],
+        recovery: ["Rest","Ice","Compression","Elevation","Avoid play","Light rehab","Monitor swelling","Pain control","Gradual return","Medical check"]
       },
 
       Strain: {
-        causes: [
-          "Overrunning muscles",
-          "Sudden sprinting",
-          "Poor warm-up",
-          "Muscle fatigue",
-          "Weak conditioning",
-          "Repetitive kicks",
-          "Incorrect technique",
-          "Lack of rest",
-          "Dehydration",
-          "Heavy training load"
-        ],
-        prevention: [
-          "Warm up properly",
-          "Strength training",
-          "Hydration",
-          "Rest between matches",
-          "Proper technique",
-          "Stretching routines",
-          "Avoid overtraining",
-          "Good nutrition",
-          "Correct footwear",
-          "Recovery sessions"
-        ],
-        recovery: [
-          "Rest muscles",
-          "Ice treatment",
-          "Gentle stretching",
-          "Avoid heavy activity",
-          "Massage lightly",
-          "Hydration",
-          "Compression support",
-          "Sleep well",
-          "Gradual return",
-          "Medical check if needed"
-        ]
+        causes: ["Overrunning","Sprinting","Poor warm-up","Fatigue","Weak conditioning","Repetitive kicks","Bad technique","No rest","Dehydration","Heavy training"],
+        prevention: ["Warm-up","Strength training","Hydration","Rest","Technique","Stretching","Avoid overload","Nutrition","Footwear","Recovery"],
+        recovery: ["Rest","Ice","Stretching","Avoid activity","Massage","Hydration","Compression","Sleep","Gradual return","Doctor check"]
       },
 
       Dislocation: {
-        causes: [
-          "Hard tackles",
-          "Falls on joints",
-          "High impact collisions",
-          "Overextension",
-          "Weak ligaments",
-          "Previous injury",
-          "Improper landing",
-          "Sudden force",
-          "Fatigue",
-          "Direct blow"
-        ],
-        prevention: [
-          "Strength training",
-          "Proper technique",
-          "Protective gear",
-          "Warm-up",
-          "Avoid risky tackles",
-          "Flexibility training",
-          "Balance drills",
-          "Safe play habits",
-          "Gradual training",
-          "Medical checks"
-        ],
-        recovery: [
-          "Do NOT relocate joint",
-          "Immobilize immediately",
-          "Apply ice",
-          "Go to hospital",
-          "Rest completely",
-          "Physiotherapy",
-          "Avoid movement",
-          "Support brace",
-          "Follow doctor advice",
-          "Slow return to sport"
-        ]
+        causes: ["Tackles","Falls","Collisions","Overextension","Weak ligaments","Previous injury","Bad landing","Force impact","Fatigue","Direct blow"],
+        prevention: ["Strength","Technique","Gear","Warm-up","Safe play","Flexibility","Balance","Controlled training","Rest","Medical check"],
+        recovery: ["Do NOT relocate","Immobilize","Ice","Hospital","Rest","Physio","No movement","Brace","Follow advice","Slow return"]
       }
-    },
-
-    Rugby: {},
-    Volleyball: {},
-    Swimming: {},
-    Handball: {}
+    }
   };
 
   /* =========================
-     COPY TEMPLATE TO OTHER SPORTS
+     COPY TEMPLATE SPORTS
   ========================= */
-  function copyTemplate() {
-    ["Rugby", "Volleyball", "Swimming", "Handball"]
-      .forEach(sport => {
-        data[sport] = JSON.parse(JSON.stringify(data.Football));
-      });
-  }
-
-  copyTemplate();
+  ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(sport => {
+    data[sport] = JSON.parse(JSON.stringify(data.Football));
+  });
 
   /* =========================
      GET ADVICE BUTTON
   ========================= */
-  document.getElementById("getAdviceBtn").addEventListener("click", function () {
+  const adviceBtn = document.getElementById("getAdviceBtn");
 
-    const resultBox = document.getElementById("result");
+  if (adviceBtn) {
+    adviceBtn.addEventListener("click", function () {
 
-    if (!selected.sport || !selected.injury || !selected.pain) {
-      resultBox.innerHTML = "⚠️ Please select all options.";
-      return;
-    }
+      const resultBox = document.getElementById("result");
 
-    const sportData = data[selected.sport];
-    const info = sportData[selected.injury];
+      if (!selected.sport || !selected.injury || !selected.pain) {
+        resultBox.innerHTML = "⚠️ Please select all options.";
+        return;
+      }
 
-    if (!info) {
-      resultBox.innerHTML = "No injury information found.";
-      return;
-    }
+      const sportData = data[selected.sport];
+      const info = sportData?.[selected.injury];
 
-    let output = `
-      <h2>${selected.sport} ${selected.injury} Advice</h2>
+      if (!info) {
+        resultBox.innerHTML = "No injury information found.";
+        return;
+      }
 
-      <h3>Causes</h3>
-      <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
+      let output = `
+        <h2>${selected.sport} ${selected.injury} Advice</h2>
 
-      <h3>Prevention</h3>
-      <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
+        <h3>Causes</h3>
+        <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
 
-      <h3>Recovery</h3>
-      <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
-    `;
+        <h3>Prevention</h3>
+        <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
 
-    if (selected.pain === "Severe") {
-      output += `<p style="color:#F97316;">⚠️ Severe: Seek immediate medical attention.</p>`;
-    } else if (selected.pain === "Moderate") {
-      output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor closely.</p>`;
-    } else {
-      output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
-    }
+        <h3>Recovery</h3>
+        <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
+      `;
 
-    resultBox.innerHTML = output;
+      if (selected.pain === "Severe") {
+        output += `<p style="color:#F97316;">⚠️ Severe: Seek medical attention.</p>`;
+      } else if (selected.pain === "Moderate") {
+        output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor.</p>`;
+      } else {
+        output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
+      }
 
-  });
+      resultBox.innerHTML = output;
+    });
+  }
 
   /* =========================
-     BACKGROUND SLIDESHOW (FIXED)
+     BACKGROUND SLIDESHOW (STABLE FIX)
   ========================= */
 
   const images = [
@@ -263,7 +161,6 @@ document.addEventListener("DOMContentLoaded", function () {
     bgIndex = (bgIndex + 1) % images.length;
   }
 
-  // start slideshow safely after page loads
   changeBackground();
   setInterval(changeBackground, 10000);
 
