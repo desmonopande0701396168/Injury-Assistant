@@ -1,35 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =========================
-     LOGIN SYSTEM (ONLY ADDITION)
-  ========================= */
-  let isLoggedIn = false;
-
-  const loginBtn = document.getElementById("loginBtn");
-  const modal = document.getElementById("loginModal");
-  const submitLogin = document.getElementById("submitLogin");
-
-  loginBtn.addEventListener("click", function () {
-    modal.classList.remove("hidden");
-  });
-
-  submitLogin.addEventListener("click", function () {
-
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-
-    if (!user || !pass) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    isLoggedIn = true;
-    modal.classList.add("hidden");
-
-    alert("Login successful!");
-  });
-
-  /* =========================
      USER SELECTION STATE
   ========================= */
   let selected = {
@@ -37,6 +8,39 @@ document.addEventListener("DOMContentLoaded", function () {
     injury: "",
     pain: ""
   };
+
+  /* =========================
+     🔐 LOGIN SYSTEM (ONLY ADDITION)
+  ========================= */
+  let isLoggedIn = false;
+
+  const loginBtn = document.getElementById("loginBtn");
+  const modal = document.getElementById("loginModal");
+  const submitLogin = document.getElementById("submitLogin");
+
+  if (loginBtn && modal && submitLogin) {
+
+    loginBtn.addEventListener("click", function () {
+      modal.classList.remove("hidden");
+    });
+
+    submitLogin.addEventListener("click", function () {
+
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if (!user || !pass) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      isLoggedIn = true;
+      modal.classList.add("hidden");
+
+      alert("Login successful!");
+    });
+
+  }
 
   /* =========================
      INJURY DEFINITIONS
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     BUTTON HANDLING
+     BUTTON HANDLING (UNCHANGED)
   ========================= */
   document.querySelectorAll("button[data-type]").forEach(btn => {
 
@@ -85,10 +89,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* =========================
-     SPORTS DATA
+     SPORTS DATA (UNCHANGED)
   ========================= */
   const data = {
+
     Football: {
+
       Sprain: {
         causes: [
           "Twisting during tackles",
@@ -223,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
   copyTemplate();
 
   /* =========================
-     GET ADVICE BUTTON
+     GET ADVICE BUTTON (UNCHANGED)
   ========================= */
   document.getElementById("getAdviceBtn").addEventListener("click", function () {
 
@@ -269,28 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     resultBox.innerHTML = output;
+
   });
-
-  /* =========================
-     BACKGROUND SLIDESHOW
-  ========================= */
-  const images = [
-    "desmon1.jpg",
-    "desmon2.jpg",
-    "desmon3.jpg",
-    "desmon4.jpg",
-    "desmon5.jpg",
-    "desmonlogo1.jpg"
-  ];
-
-  let bgIndex = 0;
-
-  function changeBackground() {
-    document.body.style.backgroundImage = `url('${images[bgIndex]}')`;
-    bgIndex = (bgIndex + 1) % images.length;
-  }
-
-  changeBackground();
-  setInterval(changeBackground, 10000);
 
 });
