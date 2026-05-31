@@ -5,6 +5,13 @@
 }
 
 /* =========================
+   SMOOTH SCROLL (IMPORTANT)
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
    BODY BACKGROUND
 ========================= */
 body {
@@ -22,7 +29,7 @@ body {
 
   overflow-x: hidden;
 
-  padding-top: 80px; /* space for navbar */
+  padding-top: 80px;
 }
 
 /* DARK OVERLAY */
@@ -30,7 +37,6 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-
   background: rgba(15, 23, 42, 0.70);
   z-index: 0;
 }
@@ -93,6 +99,10 @@ body::before {
   font-weight: bold;
 }
 
+.nav-links button:hover {
+  background: #16A34A;
+}
+
 /* =========================
    LOGIN MODAL
 ========================= */
@@ -147,7 +157,6 @@ body::before {
   cursor: pointer;
 }
 
-/* HIDE CLASS */
 .hidden {
   display: none;
 }
@@ -278,7 +287,7 @@ button.active {
   color: #E2E8F0;
 }
 
-/* INFO SECTION */
+/* INFO SECTIONS */
 .info {
   position: relative;
   z-index: 1;
@@ -286,13 +295,25 @@ button.active {
   width: 90%;
   max-width: 700px;
 
-  margin: 20px auto;
-  padding: 20px;
+  margin: 40px auto;
+
+  padding: 25px;
 
   background: rgba(255,255,255,0.08);
   border-radius: 20px;
 
   color: white;
+
+  scroll-margin-top: 100px; /* IMPORTANT for navbar */
+}
+
+.info h2 {
+  color: #22C55E;
+  margin-bottom: 10px;
+}
+
+.info p {
+  line-height: 1.7;
 }
 
 /* LOGO */
@@ -321,7 +342,6 @@ button.active {
   padding: 15px;
 
   background: rgba(245,158,11,0.15);
-
   border-left: 4px solid #F59E0B;
 
   border-radius: 10px;
@@ -346,10 +366,15 @@ button.active {
     font-size: 14px;
     padding: 12px;
   }
+
+  .nav-links {
+    gap: 8px;
+    font-size: 12px;
+  }
 }
 
 /* =========================
-   ANIMATIONS
+   ANIMATION
 ========================= */
 @keyframes fadeIn {
   from {
