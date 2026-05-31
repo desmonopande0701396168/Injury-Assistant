@@ -4,385 +4,110 @@
   padding: 0;
 }
 
-/* =========================
-   SMOOTH SCROLL (IMPORTANT)
-========================= */
 html {
   scroll-behavior: smooth;
 }
 
-/* =========================
-   BODY BACKGROUND
-========================= */
 body {
-  margin: 0;
-  min-height: 100vh;
-  position: relative;
-
-  background-color: #0F172A;
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  font-family: Arial, sans-serif;
-
+  font-family: Arial;
+  background: #0F172A;
+  color: white;
   overflow-x: hidden;
-
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
-/* DARK OVERLAY */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.70);
-  z-index: 0;
-}
-
-/* =========================
-   NAVBAR (DASHBOARD)
-========================= */
+/* NAVBAR */
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
-
+  background: rgba(0,0,0,0.8);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-
-  padding: 15px 25px;
-
-  background: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(10px);
-
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-
+  padding: 15px;
   z-index: 1000;
-}
-
-.logo-title {
-  color: #22C55E;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 .nav-links a {
   color: white;
+  margin: 0 10px;
   text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  color: #22C55E;
 }
 
 .nav-links button {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-
   background: #22C55E;
+  border: none;
+  padding: 8px 12px;
   color: white;
-
   cursor: pointer;
-  font-weight: bold;
 }
 
-.nav-links button:hover {
-  background: #16A34A;
-}
-
-/* =========================
-   LOGIN MODAL
-========================= */
+/* LOGIN */
 .modal {
   position: fixed;
   inset: 0;
-
   background: rgba(0,0,0,0.7);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 2000;
 }
 
 .modal-box {
-  background: #0F172A;
-
-  padding: 25px;
-
-  border-radius: 15px;
-
-  width: 300px;
-
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.modal-box h2 {
-  color: #22C55E;
-  text-align: center;
-}
-
-.modal-box input {
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-}
-
-.modal-box button {
-  background: #22C55E;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 .hidden {
   display: none;
 }
 
-/* =========================
-   APP CONTAINER
-========================= */
+/* LOCK SYSTEM */
+#appLocked.locked {
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* APP */
 .app {
-  position: relative;
-  z-index: 1;
-
-  width: 90%;
   max-width: 500px;
-
-  margin: 40px auto;
+  margin: 20px auto;
   padding: 20px;
-
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-
-  border-radius: 20px;
-
-  border: 1px solid rgba(255,255,255,0.1);
-
-  animation: fadeIn 1.5s ease;
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
 }
 
-/* TITLE */
-h1 {
-  text-align: center;
-  color: #22C55E;
-  margin-bottom: 15px;
-  font-size: 32px;
-}
-
-/* SUBTITLE */
-.subtitle {
-  text-align: center;
-  color: #CBD5E1;
-  margin-bottom: 20px;
-  font-size: 15px;
-}
-
-/* HEADINGS */
-h3 {
-  color: #FFFFFF;
-  margin-top: 15px;
-  margin-bottom: 8px;
-}
-
-/* OPTIONS */
-.options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-/* BUTTONS */
 button {
-  flex: 1;
-  padding: 15px;
-  min-height: 50px;
-
-  border: none;
-  border-radius: 12px;
-
+  padding: 12px;
+  margin: 5px;
   background: #2563EB;
   color: white;
-
+  border: none;
   cursor: pointer;
-
-  font-size: 15px;
-  font-weight: bold;
-
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background: #1D4ED8;
-  transform: translateY(-3px) scale(1.03);
 }
 
 button.active {
   background: #22C55E;
 }
 
-/* MAIN BUTTON */
 .main-btn {
   width: 100%;
-  padding: 14px;
-  margin-top: 15px;
-
   background: #22C55E;
-  border-radius: 12px;
-
-  font-size: 16px;
 }
 
-.main-btn:hover {
-  background: #16A34A;
-}
-
-/* RESULT BOX */
-.result {
-  margin-top: 20px;
-  padding: 25px;
-
-  min-height: 250px;
-
-  background: rgba(15, 23, 42, 0.85);
-  color: white;
-
-  border-radius: 15px;
-
-  overflow-y: auto;
-}
-
-/* DEFINITION BOX */
-.definition {
+.result, .definition {
   margin-top: 15px;
-  padding: 20px;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  border-radius: 15px;
-
-  color: #E2E8F0;
-}
-
-/* INFO SECTIONS */
-.info {
-  position: relative;
-  z-index: 1;
-
-  width: 90%;
-  max-width: 700px;
-
-  margin: 40px auto;
-
-  padding: 25px;
-
+  padding: 10px;
   background: rgba(255,255,255,0.08);
-  border-radius: 20px;
-
-  color: white;
-
-  scroll-margin-top: 100px; /* IMPORTANT for navbar */
 }
 
-.info h2 {
-  color: #22C55E;
-  margin-bottom: 10px;
-}
-
-.info p {
-  line-height: 1.7;
-}
-
-/* LOGO */
-.logo {
-  display: block;
-  width: 90px;
-  height: 90px;
-
-  margin: 0 auto 15px;
-
-  border-radius: 50%;
-  border: 3px solid #22C55E;
-}
-
-/* CREATOR */
-.creator {
-  text-align: center;
-  font-size: 13px;
-  color: #CBD5E1;
-  margin-top: 15px;
-}
-
-/* DISCLAIMER */
-.disclaimer {
-  margin-top: 20px;
-  padding: 15px;
-
-  background: rgba(245,158,11,0.15);
-  border-left: 4px solid #F59E0B;
-
-  border-radius: 10px;
-
-  color: #FDE68A;
-}
-
-/* =========================
-   MOBILE
-========================= */
-@media (max-width: 600px) {
-
-  .app {
-    width: 95%;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  button {
-    font-size: 14px;
-    padding: 12px;
-  }
-
-  .nav-links {
-    gap: 8px;
-    font-size: 12px;
-  }
-}
-
-/* =========================
-   ANIMATION
-========================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.info {
+  margin: 20px;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
 }
