@@ -260,6 +260,38 @@ button.active {
   margin-top: 15px;
 }
 
+/* LOGO */
+.logo {
+  display: block;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  border: 3px solid #22C55E;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+/* SUBTITLE */
+.subtitle {
+  text-align: center;
+  color: #CBD5E1;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(245,158,11,0.15);
+  border-left: 4px solid #F59E0B;
+  border-radius: 10px;
+  color: #FDE68A;
+  line-height: 1.6;
+  font-size: 14px;
+}
 /* MOBILE RESPONSIVE */
 @media (max-width: 600px) {
 
