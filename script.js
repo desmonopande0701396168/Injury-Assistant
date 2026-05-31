@@ -247,8 +247,9 @@ const images = [
   "desmon1.jpg",
   "desmon2.jpg",
   "desmon3.jpg",
-  "desmon4.jpg"
+  "desmon4.jpg",
   "desmon5.jpg",
+  "desmonlogo1.jpg",
 ];
 
 let bgIndex = 0;
