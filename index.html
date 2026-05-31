@@ -10,8 +10,7 @@
   <link rel="icon" href="desmonlogo1.jpg">
   <link rel="stylesheet" href="style.css">
 
-  <meta name="description" content="Sports Injury Advisor helps athletes understand injuries, prevention, and recovery.">
-
+  <!-- Smooth scrolling -->
   <style>
     html {
       scroll-behavior: smooth;
@@ -21,99 +20,99 @@
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<div class="navbar">
-  <div class="logo-title">Injury Assistant</div>
+  <!-- ================= NAVBAR ================= -->
+  <div class="navbar">
+    <div class="logo-title">Injury Assistant</div>
 
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#features">Features</a>
-    <a href="#app">App</a>
-    <button id="loginBtn">Sign In</button>
-  </div>
-</div>
-
-<!-- ================= LOGIN MODAL ================= -->
-<div id="loginModal" class="modal hidden">
-  <div class="modal-box">
-    <h2>Sign In</h2>
-
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
-
-    <button id="submitLogin">Login</button>
-  </div>
-</div>
-
-<!-- ================= APP WRAPPER (LOCKED AREA) ================= -->
-<div id="appLocked">
-
-<!-- ================= MAIN APP ================= -->
-<main id="app" class="app">
-
-  <img src="desmonlogo1.jpg" class="logo">
-
-  <h1>Sports Injury Advisor</h1>
-
-  <p class="subtitle">Helping athletes prevent, understand, and recover from sports injuries.</p>
-
-  <h3>Select Sport</h3>
-  <div class="options">
-    <button data-type="sport" data-value="Football">Football</button>
-    <button data-type="sport" data-value="Rugby">Rugby</button>
-    <button data-type="sport" data-value="Volleyball">Volleyball</button>
-    <button data-type="sport" data-value="Swimming">Swimming</button>
-    <button data-type="sport" data-value="Handball">Handball</button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="#app">App</a>
+      <button id="loginBtn">Sign In</button>
+    </div>
   </div>
 
-  <h3>Select Injury</h3>
-  <div class="options">
-    <button data-type="injury" data-value="Sprain">Sprain</button>
-    <button data-type="injury" data-value="Strain">Strain</button>
-    <button data-type="injury" data-value="Dislocation">Dislocation</button>
+  <!-- ================= LOGIN MODAL ================= -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-box">
+      <h2>Sign In</h2>
+
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+
+      <button id="submitLogin">Login</button>
+    </div>
   </div>
 
-  <h3>Pain Level</h3>
-  <div class="options">
-    <button data-type="pain" data-value="Mild">Mild</button>
-    <button data-type="pain" data-value="Moderate">Moderate</button>
-    <button data-type="pain" data-value="Severe">Severe</button>
-  </div>
+  <!-- ================= APP ================= -->
+  <main id="app" class="app">
 
-  <button id="getAdviceBtn" class="main-btn">Get Advice</button>
+    <img src="desmonlogo1.jpg" class="logo" alt="logo">
 
-  <div id="result" class="result"></div>
+    <h1>Sports Injury Advisor</h1>
 
-  <div id="definitionBox" class="definition"></div>
+    <p class="subtitle">
+      Helping athletes prevent, understand, and recover from sports injuries.
+    </p>
 
-  <div class="disclaimer">
-    <strong>Medical Disclaimer:</strong> This is for educational use only.
-  </div>
+    <h3>Select Sport</h3>
+    <div class="options">
+      <button data-type="sport" data-value="Football">Football</button>
+      <button data-type="sport" data-value="Rugby">Rugby</button>
+      <button data-type="sport" data-value="Volleyball">Volleyball</button>
+      <button data-type="sport" data-value="Swimming">Swimming</button>
+      <button data-type="sport" data-value="Handball">Handball</button>
+    </div>
 
-  <p class="creator">Created by Christopher Opande</p>
+    <h3>Select Injury</h3>
+    <div class="options">
+      <button data-type="injury" data-value="Sprain">Sprain</button>
+      <button data-type="injury" data-value="Strain">Strain</button>
+      <button data-type="injury" data-value="Dislocation">Dislocation</button>
+    </div>
 
-</main>
+    <h3>Pain Level</h3>
+    <div class="options">
+      <button data-type="pain" data-value="Mild">Mild</button>
+      <button data-type="pain" data-value="Moderate">Moderate</button>
+      <button data-type="pain" data-value="Severe">Severe</button>
+    </div>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="info">
-  <h2>About</h2>
-  <p>Helps athletes understand sports injuries and recovery methods.</p>
-</section>
+    <button id="getAdviceBtn" class="main-btn">Get Advice</button>
 
-<!-- ================= FEATURES ================= -->
-<section id="features" class="info">
-  <h2>Features</h2>
-  <p>
-    ✓ Injury Definitions<br>
-    ✓ Prevention Tips<br>
-    ✓ Recovery Guidance<br>
-    ✓ Sports Advice
-  </p>
-</section>
+    <div id="result" class="result"></div>
 
-</div>
+    <div id="definitionBox" class="definition"></div>
 
-<script src="script.js"></script>
+    <div class="disclaimer">
+      <strong>Medical Disclaimer:</strong><br>
+      This tool is for educational purposes only and not medical advice.
+    </div>
+
+    <p class="creator">Created by Christopher Opande</p>
+  </main>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="info">
+    <h2>About Injury Assistant</h2>
+    <p>
+      This app helps athletes understand sports injuries, causes, prevention, and recovery guidance.
+    </p>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section id="features" class="info">
+    <h2>Features</h2>
+    <p>
+      ✓ Injury Definitions<br>
+      ✓ Recovery Guidance<br>
+      ✓ Prevention Tips<br>
+      ✓ Sport-based Advice<br>
+      ✓ Pain-level Analysis
+    </p>
+  </section>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
