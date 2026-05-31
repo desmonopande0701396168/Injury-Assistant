@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     🔐 LOGIN SYSTEM (ONLY ADDITION)
+     🔐 LOGIN SYSTEM (FIXED)
   ========================= */
   let isLoggedIn = false;
 
@@ -26,10 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     submitLogin.addEventListener("click", function () {
 
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
+      const user = document.getElementById("username");
+      const pass = document.getElementById("password");
 
-      if (!user || !pass) {
+      if (!user || !pass || !user.value || !pass.value) {
         alert("Please fill in all fields");
         return;
       }
@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       alert("Login successful!");
     });
-
   }
 
   /* =========================
@@ -57,44 +56,46 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     BUTTON HANDLING (UNCHANGED)
+     BUTTON HANDLING (SAFE + SAME LOGIC)
   ========================= */
-  document.querySelectorAll("button[data-type]").forEach(btn => {
+  const buttons = document.querySelectorAll("button[data-type]");
 
-    btn.addEventListener("click", function () {
+  if (buttons.length) {
+    buttons.forEach(btn => {
 
-      const type = this.dataset.type;
-      const value = this.dataset.value;
+      btn.addEventListener("click", function () {
 
-      selected[type] = value;
+        const type = this.dataset.type;
+        const value = this.dataset.value;
 
-      document.querySelectorAll(`button[data-type="${type}"]`)
-        .forEach(b => b.classList.remove("active"));
+        selected[type] = value;
 
-      this.classList.add("active");
+        document.querySelectorAll(`button[data-type="${type}"]`)
+          .forEach(b => b.classList.remove("active"));
 
-      if (type === "injury") {
-        const box = document.getElementById("definitionBox");
+        this.classList.add("active");
 
-        if (box) {
-          box.innerHTML = `
-            <h3>${value}</h3>
-            <p>${definitions[value]}</p>
-          `;
+        if (type === "injury") {
+          const box = document.getElementById("definitionBox");
+
+          if (box) {
+            box.innerHTML = `
+              <h3>${value}</h3>
+              <p>${definitions[value]}</p>
+            `;
+          }
         }
-      }
+
+      });
 
     });
-
-  });
+  }
 
   /* =========================
      SPORTS DATA (UNCHANGED)
   ========================= */
   const data = {
-
     Football: {
-
       Sprain: {
         causes: [
           "Twisting during tackles",
@@ -211,78 +212,70 @@ document.addEventListener("DOMContentLoaded", function () {
           "Slow return to sport"
         ]
       }
-    },
-
-    Rugby: {},
-    Volleyball: {},
-    Swimming: {},
-    Handball: {}
+    }
   };
 
-  function copyTemplate() {
-    ["Rugby", "Volleyball", "Swimming", "Handball"]
-      .forEach(sport => {
-        data[sport] = JSON.parse(JSON.stringify(data.Football));
-      });
+  /* COPY OTHER SPORTS */
+  ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(s =>
+    data[s] = JSON.parse(JSON.stringify(data.Football))
+  );
+
+  /* =========================
+     GET ADVICE (FIXED SAFE)
+  ========================= */
+  const adviceBtn = document.getElementById("getAdviceBtn");
+
+  if (adviceBtn) {
+    adviceBtn.addEventListener("click", function () {
+
+      if (!isLoggedIn) {
+        alert("Please sign in first");
+        return;
+      }
+
+      const resultBox = document.getElementById("result");
+
+      if (!selected.sport || !selected.injury || !selected.pain) {
+        resultBox.innerHTML = "⚠️ Please select all options.";
+        return;
+      }
+
+      const sportData = data[selected.sport];
+      const info = sportData?.[selected.injury];
+
+      if (!info) {
+        resultBox.innerHTML = "No injury information found.";
+        return;
+      }
+
+      let output = `
+        <h2>${selected.sport} ${selected.injury} Advice</h2>
+
+        <h3>Causes</h3>
+        <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
+
+        <h3>Prevention</h3>
+        <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
+
+        <h3>Recovery</h3>
+        <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
+      `;
+
+      if (selected.pain === "Severe") {
+        output += `<p style="color:#F97316;">⚠️ Severe: Seek medical attention.</p>`;
+      } else if (selected.pain === "Moderate") {
+        output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor closely.</p>`;
+      } else {
+        output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
+      }
+
+      resultBox.innerHTML = output;
+    });
   }
 
-  copyTemplate();
-
   /* =========================
-     GET ADVICE BUTTON (UNCHANGED)
+     🌄 BACKGROUND SLIDESHOW (FIXED)
   ========================= */
-  document.getElementById("getAdviceBtn").addEventListener("click", function () {
-
-    if (!isLoggedIn) {
-      alert("Please sign in first");
-      return;
-    }
-
-    const resultBox = document.getElementById("result");
-
-    if (!selected.sport || !selected.injury || !selected.pain) {
-      resultBox.innerHTML = "⚠️ Please select all options.";
-      return;
-    }
-
-    const sportData = data[selected.sport];
-    const info = sportData[selected.injury];
-
-    if (!info) {
-      resultBox.innerHTML = "No injury information found.";
-      return;
-    }
-
-    let output = `
-      <h2>${selected.sport} ${selected.injury} Advice</h2>
-
-      <h3>Causes</h3>
-      <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
-
-      <h3>Prevention</h3>
-      <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
-
-      <h3>Recovery</h3>
-      <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
-    `;
-
-    if (selected.pain === "Severe") {
-      output += `<p style="color:#F97316;">⚠️ Severe: Seek medical attention.</p>`;
-    } else if (selected.pain === "Moderate") {
-      output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor closely.</p>`;
-    } else {
-      output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
-    }
-
-    resultBox.innerHTML = output;
-
-  });
-
-
-  /* =========================
-     🌄 BACKGROUND IMAGE SLIDESHOW (FIXED + ADDED)
-  ========================= */
-
   const images = [
     "desmon1.jpg",
     "desmon2.jpg",
@@ -299,9 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bgIndex = (bgIndex + 1) % images.length;
   }
 
-  // start slideshow
   changeBackground();
   setInterval(changeBackground, 10000);
 
 });
-
