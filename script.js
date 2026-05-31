@@ -278,4 +278,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
+
+  /* =========================
+     🌄 BACKGROUND IMAGE SLIDESHOW (FIXED + ADDED)
+  ========================= */
+
+  const images = [
+    "desmon1.jpg",
+    "desmon2.jpg",
+    "desmon3.jpg",
+    "desmon4.jpg",
+    "desmon5.jpg",
+    "desmonlogo1.jpg"
+  ];
+
+  let bgIndex = 0;
+
+  function changeBackground() {
+    document.body.style.backgroundImage = `url('${images[bgIndex]}')`;
+    bgIndex = (bgIndex + 1) % images.length;
+  }
+
+  // start slideshow
+  changeBackground();
+  setInterval(changeBackground, 10000);
+
 });
+
