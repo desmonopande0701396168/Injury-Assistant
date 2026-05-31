@@ -10,17 +10,14 @@
   <link rel="icon" href="desmonlogo1.jpg">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Smooth scrolling -->
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 
 <body>
 
-  <!-- ================= NAVBAR ================= -->
+  <!-- NAVBAR -->
   <div class="navbar">
     <div class="logo-title">Injury Assistant</div>
 
@@ -32,7 +29,7 @@
     </div>
   </div>
 
-  <!-- ================= LOGIN MODAL ================= -->
+  <!-- LOGIN MODAL -->
   <div id="loginModal" class="modal hidden">
     <div class="modal-box">
       <h2>Sign In</h2>
@@ -44,8 +41,8 @@
     </div>
   </div>
 
-  <!-- ================= APP ================= -->
-  <main id="app" class="app">
+  <!-- APP -->
+  <div class="app" id="app">
 
     <img src="desmonlogo1.jpg" class="logo" alt="logo">
 
@@ -81,36 +78,35 @@
     <button id="getAdviceBtn" class="main-btn">Get Advice</button>
 
     <div id="result" class="result"></div>
-
     <div id="definitionBox" class="definition"></div>
 
     <div class="disclaimer">
       <strong>Medical Disclaimer:</strong><br>
-      This tool is for educational purposes only and not medical advice.
+      Educational use only — not medical advice.
     </div>
 
     <p class="creator">Created by Christopher Opande</p>
-  </main>
 
-  <!-- ================= ABOUT ================= -->
-  <section id="about" class="info">
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="info">
     <h2>About Injury Assistant</h2>
     <p>
-      This app helps athletes understand sports injuries, causes, prevention, and recovery guidance.
+      Helps athletes understand injuries, causes, prevention and recovery.
     </p>
-  </section>
+  </div>
 
-  <!-- ================= FEATURES ================= -->
-  <section id="features" class="info">
+  <!-- FEATURES -->
+  <div id="features" class="info">
     <h2>Features</h2>
     <p>
       ✓ Injury Definitions<br>
       ✓ Recovery Guidance<br>
       ✓ Prevention Tips<br>
-      ✓ Sport-based Advice<br>
-      ✓ Pain-level Analysis
+      ✓ Pain-Level Analysis
     </p>
-  </section>
+  </div>
 
   <script src="script.js"></script>
 
