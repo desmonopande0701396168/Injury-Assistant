@@ -8,86 +8,172 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ================= BODY ================= */
 body {
-  font-family: Arial;
-  background: #0F172A;
-  color: white;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+
+  background-color: #0F172A;
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   overflow-x: hidden;
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
-/* NAVBAR */
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  z-index: 0;
+}
+
+/* ================= NAVBAR ================= */
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  background: rgba(0,0,0,0.8);
+
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  align-items: center;
+
+  padding: 15px 25px;
+
+  background: rgba(15, 23, 42, 0.95);
   z-index: 1000;
+}
+
+.logo-title {
+  color: #22C55E;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 .nav-links a {
   color: white;
-  margin: 0 10px;
   text-decoration: none;
 }
 
+.nav-links a:hover {
+  color: #22C55E;
+}
+
 .nav-links button {
+  padding: 8px 12px;
   background: #22C55E;
   border: none;
-  padding: 8px 12px;
   color: white;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-/* LOGIN */
+/* ================= LOGIN ================= */
 .modal {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.7);
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   z-index: 2000;
 }
 
 .modal-box {
-  background: #111;
+  background: #0F172A;
   padding: 20px;
-  border-radius: 10px;
-  width: 250px;
+  border-radius: 12px;
+
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.modal-box h2 {
+  color: #22C55E;
+  text-align: center;
+}
+
+.modal-box input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.modal-box button {
+  background: #22C55E;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .hidden {
   display: none;
 }
 
-/* LOCK SYSTEM */
-#appLocked.locked {
-  filter: blur(6px);
-  pointer-events: none;
-}
-
-/* APP */
+/* ================= APP ================= */
 .app {
+  position: relative;
+  z-index: 1;
+
+  width: 90%;
   max-width: 500px;
-  margin: 20px auto;
+
+  margin: 40px auto;
   padding: 20px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
+
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+
+  backdrop-filter: blur(10px);
 }
 
+/* TITLE */
+h1 {
+  color: #22C55E;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  text-align: center;
+  color: #CBD5E1;
+  margin-bottom: 20px;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* BUTTONS */
 button {
+  flex: 1;
   padding: 12px;
-  margin: 5px;
+  border-radius: 10px;
+  border: none;
+
   background: #2563EB;
   color: white;
-  border: none;
+
   cursor: pointer;
 }
 
@@ -95,19 +181,65 @@ button.active {
   background: #22C55E;
 }
 
+/* MAIN BUTTON */
 .main-btn {
   width: 100%;
+  margin-top: 15px;
   background: #22C55E;
 }
 
-.result, .definition {
+/* RESULT */
+.result {
   margin-top: 15px;
-  padding: 10px;
-  background: rgba(255,255,255,0.08);
+  padding: 20px;
+  background: rgba(15,23,42,0.85);
+  color: white;
+  border-radius: 12px;
 }
 
+/* DEFINITION */
+.definition {
+  margin-top: 10px;
+  padding: 15px;
+  background: rgba(255,255,255,0.08);
+  color: #E2E8F0;
+  border-radius: 12px;
+}
+
+/* INFO */
 .info {
-  margin: 20px;
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
   padding: 20px;
-  background: rgba(255,255,255,0.05);
+
+  background: rgba(255,255,255,0.08);
+  border-radius: 20px;
+  color: white;
+}
+
+/* LOGO */
+.logo {
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  border: 3px solid #22C55E;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+  margin-top: 15px;
+  padding: 15px;
+  background: rgba(245,158,11,0.15);
+  border-left: 4px solid #F59E0B;
+  color: #FDE68A;
+}
+
+/* CREATOR */
+.creator {
+  text-align: center;
+  margin-top: 10px;
+  color: #CBD5E1;
 }
