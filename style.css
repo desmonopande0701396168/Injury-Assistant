@@ -144,14 +144,14 @@ body::before {
 }
 
 /* =========================
-   HIDE CLASS
+   HIDE
 ========================= */
 .hidden {
   display: none;
 }
 
 /* =========================
-   APP CONTAINER
+   APP
 ========================= */
 .app {
   position: relative;
@@ -188,7 +188,7 @@ body::before {
 }
 
 /* =========================
-   TEXT SPACING FIX
+   TEXT SPACING ONLY
 ========================= */
 h1 {
   text-align: center;
@@ -209,22 +209,23 @@ h3 {
 }
 
 /* =========================
-   BUTTON GROUP (ONLY SPACING FIX)
+   FIX ONLY SPACING ISSUE
+   (NO STYLE CHANGES)
 ========================= */
 .button-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px; /* spacing fix */
+  gap: 14px;
   margin-bottom: 18px;
 }
 
-/* DO NOT CHANGE YOUR BUTTON STYLE */
+/* ONLY remove crowding */
 .button-group button {
-  margin: 0; /* removes congestion only */
+  margin: 0;
 }
 
 /* =========================
-   MAIN BUTTON SPACING
+   MAIN BUTTON SPACING ONLY
 ========================= */
 .main-btn {
   width: 100%;
@@ -232,7 +233,7 @@ h3 {
 }
 
 /* =========================
-   RESULT BOX SPACING
+   RESULT
 ========================= */
 .result {
   margin-top: 20px;
@@ -246,7 +247,7 @@ h3 {
 }
 
 /* =========================
-   INFO SECTION SPACING
+   INFO
 ========================= */
 .info {
   width: 90%;
@@ -262,7 +263,7 @@ h3 {
 }
 
 /* =========================
-   MOBILE SPACING ONLY
+   MOBILE
 ========================= */
 @media (max-width: 600px) {
   .app {
