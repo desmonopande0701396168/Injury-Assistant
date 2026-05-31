@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+  /* =========================
+     USER SELECTION STATE
+  ========================= */
   let selected = {
     sport: "",
     injury: "",
@@ -7,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     DEFINITIONS
+     INJURY DEFINITIONS
   ========================= */
   const definitions = {
     Sprain:
@@ -21,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /* =========================
-     BUTTON SYSTEM
+     BUTTON CLICK HANDLER
   ========================= */
   document.querySelectorAll("button[data-type]").forEach(btn => {
 
@@ -32,14 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       selected[type] = value;
 
-      document
-        .querySelectorAll(`button[data-type="${type}"]`)
+      // remove active class from same group
+      document.querySelectorAll(`button[data-type="${type}"]`)
         .forEach(b => b.classList.remove("active"));
 
       this.classList.add("active");
 
+      // show definition when injury selected
       if (type === "injury") {
-
         const box = document.getElementById("definitionBox");
 
         box.innerHTML = `
@@ -56,9 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
      SPORTS DATA
   ========================= */
   const data = {
-
     Football: {
-
       Sprain: {
         causes: [
           "Twisting during tackles",
@@ -183,6 +184,9 @@ document.addEventListener("DOMContentLoaded", function () {
     Handball: {}
   };
 
+  /* =========================
+     COPY TEMPLATE TO OTHER SPORTS
+  ========================= */
   function copyTemplate() {
     ["Rugby", "Volleyball", "Swimming", "Handball"]
       .forEach(sport => {
@@ -193,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
   copyTemplate();
 
   /* =========================
-     GET ADVICE
+     GET ADVICE BUTTON
   ========================= */
   document.getElementById("getAdviceBtn").addEventListener("click", function () {
 
@@ -237,37 +241,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
+  /* =========================
+     BACKGROUND SLIDESHOW (FIXED)
+  ========================= */
+
+  const images = [
+    "desmon1.jpg",
+    "desmon2.jpg",
+    "desmon3.jpg",
+    "desmon4.jpg",
+    "desmon5.jpg",
+    "desmonlogo1.jpg"
+  ];
+
+  let bgIndex = 0;
+
+  function changeBackground() {
+    document.body.style.transition = "background-image 1.5s ease-in-out";
+    document.body.style.backgroundImage = `url('${images[bgIndex]}')`;
+
+    bgIndex = (bgIndex + 1) % images.length;
+  }
+
+  // start slideshow safely after page loads
+  changeBackground();
+  setInterval(changeBackground, 10000);
+
 });
-
-/* =========================
-   BACKGROUND SLIDESHOW (ONLY CHANGES ADDED)
-========================= */
-
-const images = [
-  "desmon1.jpg",
-  "desmon2.jpg",
-  "desmon3.jpg",
-  "desmon4.jpg",
-  "desmon5.jpg",
-  "desmonlogo1.jpg",
-];
-
-let bgIndex = 0;
-
-function changeBackground() {
-
-  /* ONLY ADDED: smooth transition effect */
-  document.body.style.transition = "background-image 1.5s ease-in-out";
-
-  document.body.style.backgroundImage =
-    `url('${images[bgIndex]}')`;
-
-  bgIndex =
-    (bgIndex + 1) % images.length;
-}
-
-/* START */
-changeBackground();
-
-/* CHANGE EVERY 10 SECONDS */
-setInterval(changeBackground, 10000);
