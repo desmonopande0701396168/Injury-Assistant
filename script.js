@@ -1,38 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* =========================
-     LOGIN SYSTEM (NEW ADDITION ONLY)
+     LOGIN SYSTEM (ONLY ADDITION)
   ========================= */
+  let isLoggedIn = false;
+
   const loginBtn = document.getElementById("loginBtn");
   const modal = document.getElementById("loginModal");
   const submitLogin = document.getElementById("submitLogin");
-
-  const app = document.querySelector(".app");
-  const about = document.querySelector("#about");
-  const features = document.querySelector("#features");
-
-  // LOCK APP INITIALLY
-  function lockApp() {
-    app.style.pointerEvents = "none";
-    app.style.filter = "blur(5px)";
-    about.style.pointerEvents = "none";
-    features.style.pointerEvents = "none";
-  }
-
-  function unlockApp() {
-    app.style.pointerEvents = "auto";
-    app.style.filter = "none";
-    about.style.pointerEvents = "auto";
-    features.style.pointerEvents = "auto";
-  }
-
-  lockApp();
 
   loginBtn.addEventListener("click", function () {
     modal.classList.remove("hidden");
   });
 
   submitLogin.addEventListener("click", function () {
+
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
 
@@ -41,21 +23,24 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    isLoggedIn = true;
     modal.classList.add("hidden");
-    unlockApp();
+
     alert("Login successful!");
   });
 
   /* =========================
-     YOUR ORIGINAL CODE (UNCHANGED)
+     USER SELECTION STATE
   ========================= */
-
   let selected = {
     sport: "",
     injury: "",
     pain: ""
   };
 
+  /* =========================
+     INJURY DEFINITIONS
+  ========================= */
   const definitions = {
     Sprain:
       "A sprain is an injury to ligaments caused by twisting or overstretching of a joint.",
@@ -67,6 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "A dislocation happens when a bone is forced out of its normal joint position."
   };
 
+  /* =========================
+     BUTTON HANDLING
+  ========================= */
   document.querySelectorAll("button[data-type]").forEach(btn => {
 
     btn.addEventListener("click", function () {
@@ -83,41 +71,166 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (type === "injury") {
         const box = document.getElementById("definitionBox");
-        box.innerHTML = `
-          <h3>${value}</h3>
-          <p>${definitions[value]}</p>
-        `;
+
+        if (box) {
+          box.innerHTML = `
+            <h3>${value}</h3>
+            <p>${definitions[value]}</p>
+          `;
+        }
       }
 
     });
 
   });
 
+  /* =========================
+     SPORTS DATA
+  ========================= */
   const data = {
     Football: {
       Sprain: {
-        causes: ["Twisting","Landing wrong","Tackles","Fatigue","Weak support","Poor warm-up","Slipping","Overstretching","Impact","Uneven ground"],
-        prevention: ["Warm-up","Strength training","Good boots","Hydration","Rest","Stretching","Balance","Recovery","Safe pitch","Avoid fatigue"],
-        recovery: ["Rest","Ice","Compression","Elevation","Physio","No rush","Light rehab","Monitor swelling","Pain control","Gradual return"]
+        causes: [
+          "Twisting during tackles",
+          "Sudden direction changes",
+          "Landing awkwardly",
+          "Uneven pitch surfaces",
+          "Weak ankle support",
+          "Fatigue during match",
+          "Poor warm-up",
+          "Direct contact injuries",
+          "Overstretching ligaments",
+          "Slipping while running"
+        ],
+        prevention: [
+          "Strengthen leg muscles",
+          "Proper warm-up before games",
+          "Wear football boots with grip",
+          "Improve balance training",
+          "Avoid overtraining",
+          "Use ankle support if needed",
+          "Stretch regularly",
+          "Train on safe surfaces",
+          "Stay hydrated",
+          "Rest when tired"
+        ],
+        recovery: [
+          "Rest immediately",
+          "Apply ice regularly",
+          "Use compression wrap",
+          "Elevate leg",
+          "Avoid playing early",
+          "Light rehab exercises",
+          "Monitor swelling",
+          "Use pain relief if needed",
+          "Return gradually",
+          "Seek medical help if severe"
+        ]
       },
+
       Strain: {
-        causes: ["Overuse","Sprinting","Fatigue","Weak muscles","Bad technique","No rest","Heavy load","Dehydration","Repetition","Poor conditioning"],
-        prevention: ["Warm-up","Strength","Rest","Hydration","Technique","Stretch","Nutrition","Recovery","Avoid overload","Sleep"],
-        recovery: ["Rest","Ice","Stretching","Massage","Hydration","Compression","Sleep","Light exercise","Gradual return","Doctor check"]
+        causes: [
+          "Overrunning muscles",
+          "Sudden sprinting",
+          "Poor warm-up",
+          "Muscle fatigue",
+          "Weak conditioning",
+          "Repetitive kicks",
+          "Incorrect technique",
+          "Lack of rest",
+          "Dehydration",
+          "Heavy training load"
+        ],
+        prevention: [
+          "Warm up properly",
+          "Strength training",
+          "Hydration",
+          "Rest between matches",
+          "Proper technique",
+          "Stretching routines",
+          "Avoid overtraining",
+          "Good nutrition",
+          "Correct footwear",
+          "Recovery sessions"
+        ],
+        recovery: [
+          "Rest muscles",
+          "Ice treatment",
+          "Gentle stretching",
+          "Avoid heavy activity",
+          "Massage lightly",
+          "Hydration",
+          "Compression support",
+          "Sleep well",
+          "Gradual return",
+          "Medical check if needed"
+        ]
       },
+
       Dislocation: {
-        causes: ["Impact","Falls","Tackles","Overextension","Weak ligaments","Bad landing","Force","Previous injury","Fatigue","Collision"],
-        prevention: ["Strength","Warm-up","Protective gear","Safe play","Balance","Flexibility","Training","Rest","Technique","Medical check"],
-        recovery: ["Do not move","Immobilize","Ice","Hospital","Rest","Physio","Brace","No pressure","Follow advice","Slow recovery"]
+        causes: [
+          "Hard tackles",
+          "Falls on joints",
+          "High impact collisions",
+          "Overextension",
+          "Weak ligaments",
+          "Previous injury",
+          "Improper landing",
+          "Sudden force",
+          "Fatigue",
+          "Direct blow"
+        ],
+        prevention: [
+          "Strength training",
+          "Proper technique",
+          "Protective gear",
+          "Warm-up",
+          "Avoid risky tackles",
+          "Flexibility training",
+          "Balance drills",
+          "Safe play habits",
+          "Gradual training",
+          "Medical checks"
+        ],
+        recovery: [
+          "Do NOT relocate joint",
+          "Immobilize immediately",
+          "Apply ice",
+          "Go to hospital",
+          "Rest completely",
+          "Physiotherapy",
+          "Avoid movement",
+          "Support brace",
+          "Follow doctor advice",
+          "Slow return to sport"
+        ]
       }
-    }
+    },
+
+    Rugby: {},
+    Volleyball: {},
+    Swimming: {},
+    Handball: {}
   };
 
-  ["Rugby","Volleyball","Swimming","Handball"].forEach(sport => {
-    data[sport] = JSON.parse(JSON.stringify(data.Football));
-  });
+  function copyTemplate() {
+    ["Rugby", "Volleyball", "Swimming", "Handball"]
+      .forEach(sport => {
+        data[sport] = JSON.parse(JSON.stringify(data.Football));
+      });
+  }
 
+  copyTemplate();
+
+  /* =========================
+     GET ADVICE BUTTON
+  ========================= */
   document.getElementById("getAdviceBtn").addEventListener("click", function () {
+
+    if (!isLoggedIn) {
+      alert("Please sign in first");
+      return;
+    }
 
     const resultBox = document.getElementById("result");
 
@@ -150,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (selected.pain === "Severe") {
       output += `<p style="color:#F97316;">⚠️ Severe: Seek medical attention.</p>`;
     } else if (selected.pain === "Moderate") {
-      output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor.</p>`;
+      output += `<p style="color:#FACC15;">⚠️ Moderate: Rest and monitor closely.</p>`;
     } else {
       output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
     }
@@ -159,9 +272,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* =========================
-     BACKGROUND SLIDESHOW (UNCHANGED)
+     BACKGROUND SLIDESHOW
   ========================= */
-
   const images = [
     "desmon1.jpg",
     "desmon2.jpg",
