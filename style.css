@@ -8,20 +8,12 @@
    BACKGROUND
 ========================= */
 body {
-  margin: 0;
   min-height: 100vh;
-  position: relative;
-
-  background-color: #0F172A;
-  background-image: url("bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
   font-family: Arial, sans-serif;
   overflow-x: hidden;
-
   padding-top: 80px;
+
+  background: url("bg.jpg") center/cover no-repeat;
 }
 
 /* DARK OVERLAY */
@@ -29,10 +21,8 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-
-  background: rgba(15, 23, 42, 0.82);
+  background: rgba(10, 15, 30, 0.82);
   backdrop-filter: blur(6px);
-
   z-index: 0;
 }
 
@@ -42,7 +32,6 @@ body::before {
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
 
   display: flex;
@@ -51,14 +40,14 @@ body::before {
 
   padding: 15px 25px;
 
-  background: rgba(15, 23, 42, 0.95);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(10, 15, 30, 0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 
   z-index: 1000;
 }
 
 .logo-title {
-  color: #22C55E;
+  color: #22c55e;
   font-weight: bold;
 }
 
@@ -75,21 +64,23 @@ body::before {
 }
 
 .nav-links a:hover {
-  color: #22C55E;
+  color: #38bdf8;
 }
 
 .nav-links button {
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
-  background: #22C55E;
+
+  background: #22c55e;
   color: white;
   font-weight: bold;
+
   cursor: pointer;
 }
 
 .nav-links button:hover {
-  background: #16A34A;
+  background: #16a34a;
 }
 
 /* =========================
@@ -98,21 +89,20 @@ body::before {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
-
   display: flex;
   justify-content: center;
   align-items: center;
 
+  background: rgba(0,0,0,0.7);
   z-index: 2000;
 }
 
 .modal-box {
-  background: #0F172A;
-  padding: 25px;
-  border-radius: 15px;
-
   width: 300px;
+  padding: 25px;
+
+  background: #0f172a;
+  border-radius: 15px;
 
   display: flex;
   flex-direction: column;
@@ -122,36 +112,18 @@ body::before {
 }
 
 .modal-box h2 {
-  color: #22C55E;
+  color: #22c55e;
   text-align: center;
 }
 
 .modal-box input {
   padding: 10px;
-  border-radius: 8px;
   border: none;
-  outline: none;
-}
-
-.modal-box button {
-  background: #22C55E;
-  border: none;
-  padding: 10px;
   border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 /* =========================
-   HIDE
-========================= */
-.hidden {
-  display: none;
-}
-
-/* =========================
-   APP
+   APP CONTAINER
 ========================= */
 .app {
   position: relative;
@@ -163,7 +135,7 @@ body::before {
   margin: 40px auto;
   padding: 25px;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(10px);
 
   border-radius: 20px;
@@ -174,110 +146,111 @@ body::before {
    LOGO
 ========================= */
 .logo {
-  display: block;
   width: 90px;
   height: 90px;
 
+  display: block;
   margin: 0 auto 15px;
 
   border-radius: 50%;
   object-fit: cover;
 
-  border: 3px solid #22C55E;
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  border: 3px solid #22c55e;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.4);
 }
 
 /* =========================
-   TEXT SPACING ONLY
+   TEXT
 ========================= */
 h1 {
   text-align: center;
-  color: #22C55E;
+  color: #22c55e;
   margin-bottom: 10px;
 }
 
 .subtitle {
   text-align: center;
-  color: #CBD5E1;
+  color: #cbd5e1;
   margin-bottom: 20px;
 }
 
 h3 {
   color: white;
-  margin-top: 22px;
-  margin-bottom: 12px;
+  margin: 18px 0 10px;
 }
 
 /* =========================
-   BUTTON GROUP
+   BUTTON LAYOUT FIX
 ========================= */
-.button-group {
+.options {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
 /* =========================
-   SPORT / INJURY / PAIN BUTTONS
+   SPORT BUTTONS
 ========================= */
-.button-group button {
+.options button {
   flex: 1 1 140px;
 
-  min-height: 50px;
-  padding: 12px 18px;
+  min-height: 52px;
+  padding: 12px 16px;
 
-  border: none;
-  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
 
-  background: #1E293B;
-  color: white;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  color: #e2e8f0;
 
   font-size: 15px;
   font-weight: 600;
 
   cursor: pointer;
-  transition: all 0.3s ease;
 
-  box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  transition: all 0.25s ease;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.35);
 }
 
-.button-group button:hover {
-  background: #334155;
-  transform: translateY(-2px);
+.options button:hover {
+  transform: translateY(-3px);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
 }
 
-/* Selected button */
-.button-group button.active {
-  background: #22C55E;
+.options button.active {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-color: #22c55e;
   color: white;
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.4);
 }
 
 /* =========================
-   GET ADVICE BUTTON
+   MAIN BUTTON
 ========================= */
 .main-btn {
   width: 100%;
-
-  margin-top: 15px;
-  margin-bottom: 10px;
-
-  padding: 14px;
+  padding: 15px;
 
   border: none;
-  border-radius: 14px;
+  border-radius: 20px;
 
-  background: #22C55E;
+  background: linear-gradient(135deg, #22c55e, #38bdf8);
   color: white;
 
   font-size: 17px;
   font-weight: bold;
 
   cursor: pointer;
+
   transition: all 0.3s ease;
+
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25);
 }
 
 .main-btn:hover {
-  background: #16A34A;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(56, 189, 248, 0.35);
 }
