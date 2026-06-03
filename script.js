@@ -296,3 +296,29 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(changeBackground, 10000);
 
 });
+// Function to toggle main button color
+function toggleMainButton() {
+  const mainBtn = document.getElementById('mainBtn');
+  if (mainBtn.classList.contains('btn-green')) {
+    mainBtn.classList.remove('btn-green');
+    mainBtn.classList.add('btn-red');
+  } else {
+    mainBtn.classList.remove('btn-red');
+    mainBtn.classList.add('btn-green');
+  }
+}
+
+// Function to set buttons to blue when selected
+function selectButton(button) {
+  // Reset all to blue
+  document.querySelectorAll('.btn-blue').forEach(btn => {
+    btn.classList.remove('btn-red', 'btn-green');
+    btn.classList.add('btn-blue');
+  });
+  // Set selected button to blue (or keep blue if not selected)
+  // Optional: you can change color if selected
+  // For example, you might want to highlight selection
+}
+
+// To make advice text green
+// Already set via CSS class 'advice', so no change needed unless you want to toggle
