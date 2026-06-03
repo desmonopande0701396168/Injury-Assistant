@@ -308,17 +308,17 @@ function toggleMainButton() {
   }
 }
 
-// Function to set buttons to blue when selected
-function selectButton(button) {
-  // Reset all to blue
-  document.querySelectorAll('.btn-blue').forEach(btn => {
-    btn.classList.remove('btn-red', 'btn-green');
-    btn.classList.add('btn-blue');
+function selectButton(btn, color) {
+  // Reset all buttons with class 'btn-blue'
+  document.querySelectorAll('.btn-blue').forEach(b => {
+    b.classList.remove('btn-red', 'btn-green');
+    b.classList.add('btn-blue');
   });
-  // Set selected button to blue (or keep blue if not selected)
-  // Optional: you can change color if selected
-  // For example, you might want to highlight selection
-}
-
-// To make advice text green
-// Already set via CSS class 'advice', so no change needed unless you want to toggle
+  // Set the clicked button to the specified color
+  btn.classList.remove('btn-blue');
+  if (color === 'red') {
+    btn.classList.add('btn-red');
+  } else if (color === 'green') {
+    btn.classList.add('btn-green');
+  }
+}vice', so no change needed unless you want to toggle
