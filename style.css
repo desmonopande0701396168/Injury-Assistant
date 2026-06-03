@@ -180,7 +180,7 @@ h3 {
 }
 
 /* =========================
-   SPORT / INJURY / PAIN BUTTONS (MATCH MAIN BUTTON)
+   OPTIONS BUTTONS (MATCH MAIN BUTTON)
 ========================= */
 .options {
   display: flex;
@@ -189,37 +189,33 @@ h3 {
   margin-bottom: 18px;
 }
 
-/* SAME STYLE AS GET ADVICE BUTTON */
-.options button {
+/* Style for all option buttons, including "Get Advice" button */
+.options button,
+.main-button {
   flex: 1 1 140px;
-
   min-height: 52px;
   padding: 14px 16px;
-
   border: none;
   border-radius: 20px;
-
   background: linear-gradient(135deg, #22c55e, #38bdf8);
   color: white;
-
   font-size: 15px;
   font-weight: 700;
-
   cursor: pointer;
-
   transition: all 0.3s ease;
-
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25);
 }
 
-/* HOVER */
-.options button:hover {
+/* Hover effect for buttons */
+.options button:hover,
+.main-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(56, 189, 248, 0.35);
 }
 
-/* ACTIVE STATE */
-.options button.active {
+/* Active (pressed) state for buttons */
+.options button.active,
+.main-button:active {
   filter: brightness(0.9);
   box-shadow: 0 0 18px rgba(34, 197, 94, 0.5);
 }
