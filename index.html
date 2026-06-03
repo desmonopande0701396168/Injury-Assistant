@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sports Injury Advisor | Injury Assistant</title>
-
-  <link rel="icon" href="desmonlogo1.jpg">
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="icon" href="desmonlogo1.jpg" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     html {
       scroll-behavior: smooth;
     }
   </style>
 </head>
-
 <body>
 
   <!-- NAVBAR -->
   <div class="navbar">
     <div class="logo-title">Injury Assistant</div>
-
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#features">Features</a>
@@ -35,21 +29,16 @@
   <div id="loginModal" class="modal hidden">
     <div class="modal-box">
       <h2>Sign In</h2>
-
-      <input type="text" id="username" placeholder="Username">
-      <input type="password" id="password" placeholder="Password">
-
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
       <button id="submitLogin">Login</button>
     </div>
   </div>
 
   <!-- APP -->
   <div class="app" id="app">
-
-    <img src="desmonlogo1.jpg" class="logo" alt="logo">
-
+    <img src="desmonlogo1.jpg" class="logo" alt="logo" />
     <h1>Sports Injury Advisor</h1>
-
     <p class="subtitle">
       Helping athletes prevent, understand, and recover from sports injuries.
     </p>
@@ -80,18 +69,18 @@
       <button data-type="pain" data-value="Severe">Severe</button>
     </div>
 
-    <button id="getAdviceBtn" class="main-btn">Get Advice</button>
+    <!-- Corrected button class -->
+    <button id="getAdviceBtn" class="main-button">Get Advice</button>
 
     <div id="result" class="result"></div>
     <div id="definitionBox" class="definition"></div>
 
     <div class="disclaimer">
-      <strong>Medical Disclaimer:</strong><br>
+      <strong>Medical Disclaimer:</strong><br />
       Educational use only — not medical advice.
     </div>
 
     <p class="creator">Created by Christopher Opande</p>
-
   </div>
 
   <!-- ABOUT -->
@@ -104,14 +93,13 @@
   <div id="features" class="info">
     <h2>Features</h2>
     <p>
-      ✓ Injury Definitions<br>
-      ✓ Recovery Guidance<br>
-      ✓ Prevention Tips<br>
+      ✓ Injury Definitions<br />
+      ✓ Recovery Guidance<br />
+      ✓ Prevention Tips<br />
       ✓ Pain-Level Analysis
     </p>
   </div>
 
   <script src="script.js"></script>
-
 </body>
 </html>
