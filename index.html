@@ -117,13 +117,13 @@
 </body>
 </html>
 <body>
-  <!-- Buttons for sport, injury, pain level -->
-  <button class="btn-blue" id="sportBtn" onclick="selectButton(red)">Sport</button>
-  <button class="btn-blue" id="injuryBtn" onclick="selectButton(red)">Injury</button>
-  <button class="btn-blue" id="painBtn" onclick="selectButton(red)">Pain Level</button>
+ <!-- Buttons for sport, injury, pain level -->
+<button class="btn-blue" id="sportBtn" onclick="selectButton(this, 'red')">Sport</button>
+<button class="btn-blue" id="injuryBtn" onclick="selectButton(this, 'red')">Injury</button>
+<button class="btn-blue" id="painBtn" onclick="selectButton(this, 'red')">Pain Level</button>
 
-  <!-- Main button -->
-  <button class="btn-green" id="mainBtn" onclick="toggleMainButton(blue)">Main Action</button>
+<!-- Main button -->
+<button class="btn-green" id="mainBtn" onclick="toggleMainButton('blue')">Main Action</button>
 
   <!-- Advice section -->
   <div class="advice" id="adviceText">Here is some advice for you.</div>
