@@ -91,9 +91,6 @@
     <p class="creator">Created by Christopher Opande</p>
   </div>
 
-  <!-- ABOUT US & FEATURES (separate pages) -->
-  <!-- Removed from index, will create separate pages for About and Features -->
-
   <!-- Buttons for sport, injury, pain, and other controls -->
   <div style="margin: 20px; text-align: center;">
     <button class="btn-blue" id="sportBtn">Sport</button>
@@ -111,7 +108,68 @@
   </div>
 
   <!-- Include JavaScript -->
-  <script src="script.js"></script>
+  <script>
+    // Your existing script.js code should be here or linked externally.
+    // For demonstration, I'll add the code to handle buttons below:
+
+    // Define the selected object
+    const selected = {
+      sport: null,
+      injury: null,
+      pain: null,
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Get references to the buttons
+      const sportBtn = document.getElementById("sportBtn");
+      const injuryBtn = document.getElementById("injuryBtn");
+      const painBtn = document.getElementById("painBtn");
+      
+      // Add event listeners for sport button
+      if (sportBtn) {
+        sportBtn.addEventListener("click", () => {
+          const sport = prompt("Enter sport (e.g., Football, Rugby, Volleyball)");
+          if (sport) {
+            selected.sport = sport;
+            sportBtn.textContent = `Sport: ${sport}`;
+          }
+        });
+      }
+
+      // Add event listeners for injury button
+      if (injuryBtn) {
+        injuryBtn.addEventListener("click", () => {
+          const injury = prompt("Enter injury (e.g., Sprain, Strain, Dislocation)");
+          if (injury) {
+            selected.injury = injury;
+            injuryBtn.textContent = `Injury: ${injury}`;
+          }
+        });
+      }
+
+      // Add event listeners for pain button
+      if (painBtn) {
+        painBtn.addEventListener("click", () => {
+          const painLevel = prompt("Enter pain level (Mild, Moderate, Severe)");
+          if (painLevel) {
+            selected.pain = painLevel;
+            painBtn.textContent = `Pain: ${painLevel}`;
+          }
+        });
+      }
+      
+      // Add other existing event handlers (e.g., for Get Advice)
+      const getAdviceBtn = document.getElementById("getAdviceBtn");
+      if (getAdviceBtn) {
+        getAdviceBtn.addEventListener("click", () => {
+          // your existing advice logic here
+          // example:
+          document.getElementById("result").innerText = 
+            `Sport: ${selected.sport || 'Not selected'}, Injury: ${selected.injury || 'Not selected'}, Pain: ${selected.pain || 'Not selected'}`;
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
