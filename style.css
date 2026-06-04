@@ -183,3 +183,14 @@ button:active {
 /* About Us & Features sections - visible on separate pages, so no styles here */
 
 /* Additional styles for advice buttons (if any) can be added here */
+/* To hide elements */
+.hidden {
+  display: none;
+}
+
+/* Optional: style your login button if needed */
+#submitLogin {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+}
