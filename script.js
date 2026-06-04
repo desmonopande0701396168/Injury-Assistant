@@ -1,99 +1,67 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* =========================
-     USER SELECTION STATE
-  ========================= */
+  // User selection state
   let selected = {
     sport: "",
     injury: "",
     pain: ""
   };
 
-  /* =========================
-     🔐 LOGIN SYSTEM (FIXED)
-  ========================= */
+  // Login system
   let isLoggedIn = false;
-
   const loginBtn = document.getElementById("loginBtn");
   const modal = document.getElementById("loginModal");
   const submitLogin = document.getElementById("submitLogin");
 
   if (loginBtn && modal && submitLogin) {
-
-    loginBtn.addEventListener("click", function () {
+    loginBtn.addEventListener("click", () => {
       modal.classList.remove("hidden");
     });
-
-    submitLogin.addEventListener("click", function () {
-
+    submitLogin.addEventListener("click", () => {
       const user = document.getElementById("username");
       const pass = document.getElementById("password");
-
       if (!user || !pass || !user.value || !pass.value) {
         alert("Please fill in all fields");
         return;
       }
-
       isLoggedIn = true;
       modal.classList.add("hidden");
-
       alert("Login successful!");
     });
   }
 
-  /* =========================
-     INJURY DEFINITIONS
-  ========================= */
-  const definitions = {
-    Sprain:
-      "A sprain is an injury to ligaments caused by twisting or overstretching of a joint.",
+  // Button handling for sport, injury, pain
+  document.querySelectorAll("button[data-type]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const type = btn.dataset.type;
+      const value = btn.dataset.value;
+      selected[type] = value;
 
-    Strain:
-      "A strain is an injury to muscles or tendons caused by overuse or overstretching.",
-
-    Dislocation:
-      "A dislocation happens when a bone is forced out of its normal joint position."
-  };
-
-  /* =========================
-     BUTTON HANDLING (SAFE + SAME LOGIC)
-  ========================= */
-  const buttons = document.querySelectorAll("button[data-type]");
-
-  if (buttons.length) {
-    buttons.forEach(btn => {
-
-      btn.addEventListener("click", function () {
-
-        const type = this.dataset.type;
-        const value = this.dataset.value;
-
-        selected[type] = value;
-
-        document.querySelectorAll(`button[data-type="${type}"]`)
-          .forEach(b => b.classList.remove("active"));
-
-        this.classList.add("active");
-
-        if (type === "injury") {
-          const box = document.getElementById("definitionBox");
-
-          if (box) {
-            box.innerHTML = `
-              <h3>${value}</h3>
-              <p>${definitions[value]}</p>
-            `;
-          }
-        }
-
+      // Remove active classes
+      document.querySelectorAll(`button[data-type="${type}"]`).forEach(b => {
+        b.classList.remove("active");
       });
+      // Add active class to current
+      btn.classList.add("active");
 
+      // Show definitions if injury
+      if (type === "injury") {
+        const box = document.getElementById("definitionBox");
+        const definitions = {
+          Sprain: "A sprain is an injury to ligaments caused by twisting or overstretching of a joint.",
+          Strain: "A strain is an injury to muscles or tendons caused by overuse or overstretching.",
+          Dislocation: "A dislocation happens when a bone is forced out of its normal joint position."
+        };
+        if (box) {
+          box.innerHTML = `
+            <h3>${value}</h3>
+            <p>${definitions[value]}</p>
+          `;
+        }
+      }
     });
-  }
+  });
 
-  /* =========================
-     SPORTS DATA (UNCHANGED)
-  ========================= */
+  // Data for injuries
   const data = {
     Football: {
       Sprain: {
@@ -134,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Seek medical help if severe"
         ]
       },
-
       Strain: {
         causes: [
           "Overrunning muscles",
@@ -173,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function () {
           "Medical check if needed"
         ]
       },
-
       Dislocation: {
         causes: [
           "Hard tackles",
@@ -215,52 +181,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  /* COPY OTHER SPORTS */
-  ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(s =>
-    data[s] = JSON.parse(JSON.stringify(data.Football))
-  );
+  // Clone data for other sports
+  ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(s => {
+    data[s] = JSON.parse(JSON.stringify(data.Football));
+  });
 
-  /* =========================
-     GET ADVICE (FIXED SAFE)
-  ========================= */
+  // Advice button event
   const adviceBtn = document.getElementById("getAdviceBtn");
-
   if (adviceBtn) {
-    adviceBtn.addEventListener("click", function () {
-
+    adviceBtn.addEventListener("click", () => {
       if (!isLoggedIn) {
         alert("Please sign in first");
         return;
       }
-
       const resultBox = document.getElementById("result");
-
       if (!selected.sport || !selected.injury || !selected.pain) {
         resultBox.innerHTML = "⚠️ Please select all options.";
         return;
       }
-
       const sportData = data[selected.sport];
       const info = sportData?.[selected.injury];
-
       if (!info) {
         resultBox.innerHTML = "No injury information found.";
         return;
       }
-
       let output = `
         <h2>${selected.sport} ${selected.injury} Advice</h2>
-
         <h3>Causes</h3>
         <ul>${info.causes.map(c => `<li>${c}</li>`).join("")}</ul>
-
         <h3>Prevention</h3>
         <ul>${info.prevention.map(p => `<li>${p}</li>`).join("")}</ul>
-
         <h3>Recovery</h3>
         <ul>${info.recovery.map(r => `<li>${r}</li>`).join("")}</ul>
       `;
-
       if (selected.pain === "Severe") {
         output += `<p style="color:#F97316;">⚠️ Severe: Seek medical attention.</p>`;
       } else if (selected.pain === "Moderate") {
@@ -268,14 +221,11 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         output += `<p style="color:#22C55E;">✔️ Mild: Home care is fine.</p>`;
       }
-
       resultBox.innerHTML = output;
     });
   }
 
-  /* =========================
-     🌄 BACKGROUND SLIDESHOW (FIXED)
-  ========================= */
+  // Background slideshow
   const images = [
     "desmon1.jpg",
     "desmon2.jpg",
@@ -284,41 +234,37 @@ document.addEventListener("DOMContentLoaded", function () {
     "desmon5.jpg",
     "desmonlogo1.jpg"
   ];
-
   let bgIndex = 0;
-
   function changeBackground() {
     document.body.style.backgroundImage = `url('${images[bgIndex]}')`;
     bgIndex = (bgIndex + 1) % images.length;
   }
-
   changeBackground();
   setInterval(changeBackground, 10000);
-
 });
-// Function to toggle main button color
+
+// Toggle main button color
 function toggleMainButton() {
-  const mainBtn = document.getElementById('mainBtn');
-  if (mainBtn.classList.contains('btn-green')) {
-    mainBtn.classList.remove('btn-green');
-    mainBtn.classList.add('btn-red');
+  const mainBtn = document.getElementById("mainBtn");
+  if (mainBtn.classList.contains("btn-green")) {
+    mainBtn.classList.remove("btn-green");
+    mainBtn.classList.add("btn-red");
   } else {
-    mainBtn.classList.remove('btn-red');
-    mainBtn.classList.add('btn-green');
+    mainBtn.classList.remove("btn-red");
+    mainBtn.classList.add("btn-green");
   }
 }
 
+// Button selection styling
 function selectButton(btn, color) {
-  // Reset all buttons with class 'btn-blue'
-  document.querySelectorAll('.btn-blue').forEach(b => {
-    b.classList.remove('btn-red', 'btn-green');
-    b.classList.add('btn-blue');
+  document.querySelectorAll("button").forEach(b => {
+    b.classList.remove("btn-red", "btn-green");
+    b.classList.add("btn-blue");
   });
-  // Set the clicked button to the specified color
-  btn.classList.remove('btn-blue');
-  if (color === 'red') {
-    btn.classList.add('btn-red');
-  } else if (color === 'green') {
-    btn.classList.add('btn-green');
+  btn.classList.remove("btn-blue");
+  if (color === "red") {
+    btn.classList.add("btn-red");
+  } else if (color === "green") {
+    btn.classList.add("btn-green");
   }
-}vice', so no change needed unless you want to toggle
+}
