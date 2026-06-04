@@ -1,3 +1,6 @@
+// Declare globally at the top
+let isLoggedIn = false;
+
 document.addEventListener("DOMContentLoaded", function () {
   // User selection state
   let selected = {
@@ -7,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Login system
-  let isLoggedIn = false;
   const loginBtn = document.getElementById("loginBtn");
   const modal = document.getElementById("loginModal");
   const submitLogin = document.getElementById("submitLogin");
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Please fill in all fields");
         return;
       }
-      isLoggedIn = true;
+      isLoggedIn = true; // update global variable
       modal.classList.add("hidden");
       alert("Login successful!");
     });
@@ -226,97 +228,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   changeBackground();
   setInterval(changeBackground, 10000);
-});
 
-// Toggle main button color
-function toggleMainButton() {
-  const mainBtn = document.getElementById("mainBtn");
-  if (mainBtn.classList.contains("btn-green")) {
-    mainBtn.classList.remove("btn-green");
-    mainBtn.classList.add("btn-red");
-  } else {
-    mainBtn.classList.remove("btn-red");
-    mainBtn.classList.add("btn-green");
-  }
-}
-
-// Button selection styling
-function selectButton(btn, color) {
-  document.querySelectorAll("button").forEach(b => {
-    b.classList.remove("btn-red", "btn-green");
-    b.classList.add("btn-blue");
-  });
-  btn.classList.remove("btn-blue");
-  if (color === "red") {
-    btn.classList.add("btn-red");
-  } else if (color === "green") {
-    btn.classList.add("btn-green");
-  }
-}
-document.addEventListener("DOMContentLoaded", () => {
-  // Select your buttons by their IDs
-  const sportBtn = document.getElementById("sportBtn");
-  const injuryBtn = document.getElementById("injuryBtn");
-  const painBtn = document.getElementById("painBtn");
-  const mainBtn = document.getElementById("mainBtn");
-  const getAdviceBtn = document.getElementById("getAdviceBtn");
-  const loginBtn = document.getElementById("loginBtn");
-
-  // Verify that buttons are selected
-  console.log({ sportBtn, injuryBtn, painBtn, mainBtn, getAdviceBtn, loginBtn });
-
-  // Add click event listeners
-  if (sportBtn) {
-    sportBtn.addEventListener("click", () => {
-      alert("Sport button clicked!");
-    });
-  }
-
-  if (injuryBtn) {
-    injuryBtn.addEventListener("click", () => {
-      alert("Injury button clicked!");
-    });
-  }
-
-  if (painBtn) {
-    painBtn.addEventListener("click", () => {
-      alert("Pain button clicked!");
-    });
-  }
-
-  if (mainBtn) {
-    mainBtn.addEventListener("click", () => {
-      alert("Main button clicked!");
-    });
-  }
-
-  if (getAdviceBtn) {
-    getAdviceBtn.addEventListener("click", () => {
-      alert("Get Advice button clicked!");
-    });
-  }
-
-  if (loginBtn) {
-    loginBtn.addEventListener("click", () => {
-      alert("Login button clicked!");
-    });
-  }
-});
-
-// Get references to modal and submit button
-const modal = document.getElementById("loginModal");
-const submitLogin = document.getElementById("submitLogin");
-
-if (submitLogin) {
-  submitLogin.addEventListener("click", () => {
-    const user = document.getElementById("username");
-    const pass = document.getElementById("password");
-    if (!user || !pass || !user.value || !pass.value) {
-      alert("Please fill in all fields");
-      return;
+  // Toggle main button color
+  window.toggleMainButton = function() {
+    const mainBtn = document.getElementById("mainBtn");
+    if (mainBtn.classList.contains("btn-green")) {
+      mainBtn.classList.remove("btn-green");
+      mainBtn.classList.add("btn-red");
+    } else {
+      mainBtn.classList.remove("btn-red");
+      mainBtn.classList.add("btn-green");
     }
-    isLoggedIn = true; // Make sure 'isLoggedIn' is defined in your script
-    modal.classList.add("hidden");
-    alert("Login successful!");
-  });
-}
+  };
+
+  // Button selection styling
+  window.selectButton = function(btn, color) {
+    document.querySelectorAll("button").forEach(b => {
+      b.classList.remove("btn-red", "btn-green");
+      b.classList.add("btn-blue");
+    });
+    btn.classList.remove("btn-blue");
+    if (color === "red") {
+      btn.classList.add("btn-red");
+    } else if (color === "green") {
+      btn.classList.add("btn-green");
+    }
+  };
+});
