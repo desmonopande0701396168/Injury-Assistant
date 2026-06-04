@@ -1,22 +1,20 @@
+/* Reset and base styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* Body background and font */
 body {
   min-height: 100vh;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
   padding-top: 80px;
-
   background: url("bg.jpg") center/cover no-repeat;
 }
 
-/* DARK OVERLAY */
+/* Dark overlay */
 body::before {
   content: "";
   position: fixed;
@@ -26,289 +24,162 @@ body::before {
   z-index: 0;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* Navbar styles */
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 15px 25px;
-
   background: rgba(10, 15, 30, 0.95);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-
   z-index: 1000;
 }
-
 .logo-title {
   color: #22c55e;
   font-weight: bold;
 }
-
 .nav-links {
   display: flex;
   gap: 15px;
   align-items: center;
 }
-
 .nav-links a {
   color: white;
   text-decoration: none;
   font-size: 14px;
 }
-
 .nav-links a:hover {
   color: #38bdf8;
 }
-
 .nav-links button {
   padding: 8px 12px;
   border-radius: 10px;
   border: none;
-
   background: #22c55e;
   color: white;
   font-weight: bold;
-
   cursor: pointer;
 }
-
 .nav-links button:hover {
   background: #16a34a;
 }
 
-/* =========================
-   MODAL
-========================= */
+/* Modal styles */
 .modal {
   position: fixed;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-
   background: rgba(0,0,0,0.7);
   z-index: 2000;
 }
-
 .modal-box {
   width: 300px;
   padding: 25px;
-
   background: #0f172a;
   border-radius: 15px;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   border: 1px solid rgba(255,255,255,0.1);
 }
-
 .modal-box h2 {
   color: #22c55e;
   text-align: center;
 }
-
 .modal-box input {
   padding: 10px;
   border: none;
   border-radius: 8px;
 }
 
-/* =========================
-   APP CONTAINER
-========================= */
+/* App container */
 .app {
   position: relative;
   z-index: 1;
-
   width: 90%;
   max-width: 520px;
-
   margin: 40px auto;
   padding: 25px;
-
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(10px);
-
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.1);
 }
-
-/* =========================
-   LOGO
-========================= */
 .logo {
   width: 90px;
   height: 90px;
-
   display: block;
   margin: 0 auto 15px;
-
   border-radius: 50%;
   object-fit: cover;
-
   border: 3px solid #22c55e;
   box-shadow: 0 0 18px rgba(34, 197, 94, 0.4);
 }
-
-/* =========================
-   TEXT
-========================= */
 h1 {
   text-align: center;
   color: #22c55e;
   margin-bottom: 10px;
 }
-
 .subtitle {
   text-align: center;
   color: #cbd5e1;
   margin-bottom: 20px;
 }
-
 h3 {
   color: white;
   margin: 18px 0 10px;
 }
-
-/* =========================
-   OPTIONS BUTTONS (MATCH MAIN BUTTON)
-========================= */
+/* Buttons for options and main action */
 .options {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
   margin-bottom: 18px;
 }
-
-/* Style for all option buttons, including "Get Advice" button */
-.options button,
-.main-button {
+button {
   flex: 1 1 140px;
   min-height: 52px;
   padding: 14px 16px;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(135deg, #22c55e, #38bdf8);
-  color: white;
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.25);
 }
-
-/* Hover effect for buttons */
-.options button:hover,
-.main-button:hover {
+button:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 25px rgba(56, 189, 248, 0.35);
 }
-
-/* Active (pressed) state for buttons */
-.options button.active,
-.main-button:active {
+button:active {
   filter: brightness(0.9);
   box-shadow: 0 0 18px rgba(34, 197, 94, 0.5);
 }
-.hidden {
-  display: none;
-}
-/* Common style for sport, injury, and pain level buttons */
-.button-option {
-  background-color: #007bff; /* Blue */
+/* Specific styles for colored buttons */
+.btn-blue {
+  background-color: #3498db;
   color: white;
-  padding: 14px 20px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  border: none;
-  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.25);
-  transition: all 0.3s ease;
-  min-width: 150px;
-  text-align: center;
 }
-
-/* Change to green when button is active/pressed */
-.button-option:active {
-  background-color: #28a745; /* Green */
-  box-shadow: 0 12px 25px rgba(40, 167, 69, 0.35);
-}
-
-/* Advice Provided button - always green */
-.advice-provided {
-  background-color: #28a745; /* Green */
+.btn-green {
+  background-color: green;
   color: white;
-  padding: 14px 20px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: default; /* Not clickable or no change on press */
-  border: none;
-  box-shadow: 0 8px 20px rgba(40, 167, 69, 0.25);
-  transition: all 0.3s ease;
-  min-width: 150px;
-  text-align: center;
 }
-
-/* About Us and Features Sections with larger text */
-#about-us, #features {
-  font-size: 20px; /* Increased font size for better readability */
-  background-color: #f8f9fa; /* Light background for contrast */
-  padding: 30px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+.btn-red {
+  background-color: red;
+  color: white;
 }
-<head>
-  <style>
-    /* Button styles */
-    .btn-blue {
-      background-color: #3498db; /* blue */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
+/* Advice text color - default */
+.advice {
+  font-weight: bold;
+  margin-top: 20px;
+  /* color will be set dynamically if needed */
+}
+/* About Us & Features sections - visible on separate pages, so no styles here */
 
-    .btn-green {
-      background-color:green; /* green */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-
-    .btn-red {
-      background-color:red; /* red */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-
-    /* Advice text color */
-    .advice {
-      color: #27ae60; /* green */
-      font-weight: bold;
-      margin-top: 20px;
-    }
-
-    /* Info sections styles for visibility */
-    .info-section {
-      border: 2px solid #2980b9; /* blue border */
-      background-color: #ecf0f1;
-      padding: 10px;
-      margin-top: 10px;
-    }
-  </style>
-</head>
+/* Additional styles for advice buttons (if any) can be added here */
