@@ -35,21 +35,16 @@
   <div id="loginModal" class="modal hidden">
     <div class="modal-box">
       <h2>Sign In</h2>
-
       <input type="text" id="username" placeholder="Username" />
       <input type="password" id="password" placeholder="Password" />
-
       <button id="submitLogin">Login</button>
     </div>
   </div>
 
-  <!-- APP -->
+  <!-- MAIN APP -->
   <div class="app" id="app">
-
     <img src="desmonlogo1.jpg" class="logo" alt="logo" />
-
     <h1>Sports Injury Advisor</h1>
-
     <p class="subtitle">
       Helping athletes prevent, understand, and recover from sports injuries.
     </p>
@@ -80,9 +75,10 @@
       <button data-type="pain" data-value="Severe">Severe</button>
     </div>
 
-   <div class="options">
-  <button id="getAdviceBtn" class="button">Get Advice</button>
-</div>
+    <!-- GET ADVICE BUTTON -->
+    <div class="options">
+      <button id="getAdviceBtn" class="button" style="background-color: red; color: white;">Get Advice</button>
+    </div>
 
     <div id="result" class="result"></div>
     <div id="definitionBox" class="definition"></div>
@@ -93,72 +89,29 @@
     </div>
 
     <p class="creator">Created by Christopher Opande</p>
-
   </div>
 
-  <!-- ABOUT -->
-  <div id="about" class="info">
-    <h2>About Injury Assistant</h2>
-    <p>Helps athletes understand injuries, causes, prevention, and recovery from these common sports injuries. This website enables young athletes to get advice on how to preven this injuries and also the causes to this injuries. </p>
+  <!-- ABOUT US & FEATURES (separate pages) -->
+  <!-- Removed from index, will create separate pages for About and Features -->
+
+  <!-- Buttons for sport, injury, pain, and other controls -->
+  <div style="margin: 20px; text-align: center;">
+    <button class="btn-blue" id="sportBtn">Sport</button>
+    <button class="btn-blue" id="injuryBtn">Injury</button>
+    <button class="btn-blue" id="painBtn">Pain Level</button>
+    <button class="btn-green" id="mainBtn" onclick="toggleMainButton()">Main Action</button>
+    <!-- Advice Text -->
+    <div class="advice" id="adviceText">Here is some advice for you.</div>
   </div>
 
-  <!-- FEATURES -->
-  <div id="features" class="info">
-    <h2>Features</h2>
-    <p>
-      ✓ Injury Definitions<br />
-      ✓ Recovery Guidance<br />
-      ✓ Prevention Tips<br />
-      ✓ Pain-Level Analysis<br />
-    </p>
+  <!-- About Us & Features links to separate pages -->
+  <div style="margin: 20px; text-align: center;">
+    <a href="about.html" target="_blank">About Us</a> |
+    <a href="features.html" target="_blank">Features</a>
   </div>
 
+  <!-- Include JavaScript -->
   <script src="script.js"></script>
 </body>
+
 </html>
-<body>
- <!-- Buttons for sport, injury, pain level -->
-<button class="btn-blue" id="sportBtn" onclick="selectButton(this, 'red')">Sport</button>
-<button class="btn-blue" id="injuryBtn" onclick="selectButton(this, 'red')">Injury</button>
-<button class="btn-blue" id="painBtn" onclick="selectButton(this, 'red')">Pain Level</button>
-
-<!-- Main button -->
-<button class="btn-green" id="mainBtn" onclick="toggleMainButton('blue')">Main Action</button>
-
-  <!-- Advice section -->
-  <div class="advice" id="adviceText">Here is some advice for you.</div>
-
-  <!-- About us / features / info -->
-  <div class="info-section">
-    <h3>About Us</h3>
-    <p>Information about us.</p>
-  </div>
-  <div class="info-section">
-    <h3>Features</h3>
-    <p>Our features.</p>
-  </div>
-
-  <!-- Include JavaScript at the end of body -->
-  <script>
-    function toggleMainButton() {
-      const mainBtn = document.getElementById('mainBtn');
-      if (mainBtn.classList.contains('btn-green')) {
-        mainBtn.classList.remove('btn-green');
-        mainBtn.classList.add('btn-red');
-      } else {
-        mainBtn.classList.remove('btn-red');
-        mainBtn.classList.add('btn-green');
-      }
-    }
-
-    function selectButton(button) {
-      // Reset all to blue
-      document.querySelectorAll('.btn-blue').forEach(btn => {
-        btn.classList.remove('btn-red', 'btn-green');
-        btn.classList.add('btn-blue');
-      });
-      // Optional: highlight selected button (if desired)
-      // For example, change color or add a border
-    }
-  </script>
-</body>
