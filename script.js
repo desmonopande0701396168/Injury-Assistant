@@ -255,3 +255,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 });
+// Attach event handler for "Main Action" button
+document.getElementById("mainBtn")?.addEventListener("click", () => {
+  toggleMainButton();
+});
+
+// Attach event handler for "Get Advice" button
+const adviceBtn = document.getElementById("getAdviceBtn");
+if (adviceBtn) {
+  adviceBtn.addEventListener("click", () => {
+    if (!isLoggedIn) {
+      alert("Please sign in first");
+      return;
+    }
+    const resultBox = document.getElementById("result");
+    if (!selected.sport || !selected.injury || !selected.pain) {
+      resultBox.innerHTML = "⚠️ Please select all options.";
+      return;
+    }
+    // Your existing advice logic continues here...
+  });
+}
+
+// Function to toggle main button color
+window.toggleMainButton = function() {
+  const mainBtn = document.getElementById("mainBtn");
+  if (mainBtn) {
+    if (mainBtn.classList.contains("btn-green")) {
+      mainBtn.classList.remove("btn-green");
+      mainBtn.classList.add("btn-red");
+    } else {
+      mainBtn.classList.remove("btn-red");
+      mainBtn.classList.add("btn-green");
+    }
+  }
+};
+
+// Function to style button selection
+window.selectButton = function(btn, color) {
+  document.querySelectorAll("button").forEach(b => {
+    b.classList.remove("btn-red", "btn-green");
+    b.classList.add("btn-blue");
+  });
+  btn.classList.remove("btn-blue");
+  if (color === "red") {
+    btn.classList.add("btn-red");
+  } else if (color === "green") {
+    btn.classList.add("btn-green");
+  }
+};
