@@ -29,164 +29,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Button handling for sport, injury, pain
-  document.querySelectorAll("button[data-type]").forEach(btn => {
+  // Attach event handlers for the "Sport", "Injury", "Pain" buttons
+  document.querySelectorAll("#sportBtn, #injuryBtn, #painBtn").forEach(btn => {
     btn.addEventListener("click", () => {
-      const type = btn.dataset.type;
-      const value = btn.dataset.value;
-      selected[type] = value;
-
-      // Remove active classes
-      document.querySelectorAll(`button[data-type="${type}"]`).forEach(b => {
-        b.classList.remove("active");
-      });
-      // Add active class to current
-      btn.classList.add("active");
-
-      // Show definitions if injury
-      if (type === "injury") {
-        const box = document.getElementById("definitionBox");
-        const definitions = {
-          Sprain: "A sprain is an injury to ligaments caused by twisting or overstretching of a joint.",
-          Strain: "A strain is an injury to muscles or tendons caused by overuse or overstretching.",
-          Dislocation: "A dislocation happens when a bone is forced out of its normal joint position."
-        };
-        if (box) {
-          box.innerHTML = `
-            <h3>${value}</h3>
-            <p>${definitions[value]}</p>
-          `;
-        }
+      // Toggle color
+      if (btn.classList.contains("btn-blue")) {
+        btn.classList.remove("btn-blue");
+        btn.classList.add("btn-green");
+      } else {
+        btn.classList.remove("btn-green");
+        btn.classList.add("btn-blue");
       }
     });
   });
 
-  // Data for injuries
-  const data = {
-    Football: {
-      Sprain: {
-        causes: [
-          "Twisting during tackles",
-          "Sudden direction changes",
-          "Landing awkwardly",
-          "Uneven pitch surfaces",
-          "Weak ankle support",
-          "Fatigue during match",
-          "Poor warm-up",
-          "Direct contact injuries",
-          "Overstretching ligaments",
-          "Slipping while running"
-        ],
-        prevention: [
-          "Strengthen leg muscles",
-          "Proper warm-up before games",
-          "Wear football boots with grip",
-          "Improve balance training",
-          "Avoid overtraining",
-          "Use ankle support if needed",
-          "Stretch regularly",
-          "Train on safe surfaces",
-          "Stay hydrated",
-          "Rest when tired"
-        ],
-        recovery: [
-          "Rest immediately",
-          "Apply ice regularly",
-          "Use compression wrap",
-          "Elevate leg",
-          "Avoid playing early",
-          "Light rehab exercises",
-          "Monitor swelling",
-          "Use pain relief if needed",
-          "Return gradually",
-          "Seek medical help if severe"
-        ]
-      },
-      Strain: {
-        causes: [
-          "Overrunning muscles",
-          "Sudden sprinting",
-          "Poor warm-up",
-          "Muscle fatigue",
-          "Weak conditioning",
-          "Repetitive kicks",
-          "Incorrect technique",
-          "Lack of rest",
-          "Dehydration",
-          "Heavy training load"
-        ],
-        prevention: [
-          "Warm up properly",
-          "Strength training",
-          "Hydration",
-          "Rest between matches",
-          "Proper technique",
-          "Stretching routines",
-          "Avoid overtraining",
-          "Good nutrition",
-          "Correct footwear",
-          "Recovery sessions"
-        ],
-        recovery: [
-          "Rest muscles",
-          "Ice treatment",
-          "Gentle stretching",
-          "Avoid heavy activity",
-          "Massage lightly",
-          "Hydration",
-          "Compression support",
-          "Sleep well",
-          "Gradual return",
-          "Medical check if needed"
-        ]
-      },
-      Dislocation: {
-        causes: [
-          "Hard tackles",
-          "Falls on joints",
-          "High impact collisions",
-          "Overextension",
-          "Weak ligaments",
-          "Previous injury",
-          "Improper landing",
-          "Sudden force",
-          "Fatigue",
-          "Direct blow"
-        ],
-        prevention: [
-          "Strength training",
-          "Proper technique",
-          "Protective gear",
-          "Warm-up",
-          "Avoid risky tackles",
-          "Flexibility training",
-          "Balance drills",
-          "Safe play habits",
-          "Gradual training",
-          "Medical checks"
-        ],
-        recovery: [
-          "Do NOT relocate joint",
-          "Immobilize immediately",
-          "Apply ice",
-          "Go to hospital",
-          "Rest completely",
-          "Physiotherapy",
-          "Avoid movement",
-          "Support brace",
-          "Follow doctor advice",
-          "Slow return to sport"
-        ]
-      }
-    }
-  };
-
-  // Clone data for other sports
-  ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(s => {
-    data[s] = JSON.parse(JSON.stringify(data.Football));
+  // Attach event handler for "Main Action" button
+  document.getElementById("mainBtn")?.addEventListener("click", () => {
+    toggleMainButton();
   });
 
-  // Advice button event
+  // Attach event handler for "Get Advice" button
   const adviceBtn = document.getElementById("getAdviceBtn");
   if (adviceBtn) {
     adviceBtn.addEventListener("click", () => {
@@ -199,6 +61,129 @@ document.addEventListener("DOMContentLoaded", function () {
         resultBox.innerHTML = "⚠️ Please select all options.";
         return;
       }
+      // Assume data object is available globally
+      const data = {
+        Football: {
+          Sprain: {
+            causes: [
+              "Twisting during tackles",
+              "Sudden direction changes",
+              "Landing awkwardly",
+              "Uneven pitch surfaces",
+              "Weak ankle support",
+              "Fatigue during match",
+              "Poor warm-up",
+              "Direct contact injuries",
+              "Overstretching ligaments",
+              "Slipping while running"
+            ],
+            prevention: [
+              "Strengthen leg muscles",
+              "Proper warm-up before games",
+              "Wear football boots with grip",
+              "Improve balance training",
+              "Avoid overtraining",
+              "Use ankle support if needed",
+              "Stretch regularly",
+              "Train on safe surfaces",
+              "Stay hydrated",
+              "Rest when tired"
+            ],
+            recovery: [
+              "Rest immediately",
+              "Apply ice regularly",
+              "Use compression wrap",
+              "Elevate leg",
+              "Avoid playing early",
+              "Light rehab exercises",
+              "Monitor swelling",
+              "Use pain relief if needed",
+              "Return gradually",
+              "Seek medical help if severe"
+            ]
+          },
+          Strain: {
+            causes: [
+              "Overrunning muscles",
+              "Sudden sprinting",
+              "Poor warm-up",
+              "Muscle fatigue",
+              "Weak conditioning",
+              "Repetitive kicks",
+              "Incorrect technique",
+              "Lack of rest",
+              "Dehydration",
+              "Heavy training load"
+            ],
+            prevention: [
+              "Warm up properly",
+              "Strength training",
+              "Hydration",
+              "Rest between matches",
+              "Proper technique",
+              "Stretching routines",
+              "Avoid overtraining",
+              "Good nutrition",
+              "Correct footwear",
+              "Recovery sessions"
+            ],
+            recovery: [
+              "Rest muscles",
+              "Ice treatment",
+              "Gentle stretching",
+              "Avoid heavy activity",
+              "Massage lightly",
+              "Hydration",
+              "Compression support",
+              "Sleep well",
+              "Gradual return",
+              "Medical check if needed"
+            ]
+          },
+          Dislocation: {
+            causes: [
+              "Hard tackles",
+              "Falls on joints",
+              "High impact collisions",
+              "Overextension",
+              "Weak ligaments",
+              "Previous injury",
+              "Improper landing",
+              "Sudden force",
+              "Fatigue",
+              "Direct blow"
+            ],
+            prevention: [
+              "Strength training",
+              "Proper technique",
+              "Protective gear",
+              "Warm-up",
+              "Avoid risky tackles",
+              "Flexibility training",
+              "Balance drills",
+              "Safe play habits",
+              "Gradual training",
+              "Medical checks"
+            ],
+            recovery: [
+              "Do NOT relocate joint",
+              "Immobilize immediately",
+              "Apply ice",
+              "Go to hospital",
+              "Rest completely",
+              "Physiotherapy",
+              "Avoid movement",
+              "Support brace",
+              "Follow doctor advice",
+              "Slow return to sport"
+            ]
+          }
+        }
+      };
+      // Clone for other sports
+      ["Rugby", "Volleyball", "Swimming", "Handball"].forEach(s => {
+        data[s] = JSON.parse(JSON.stringify(data.Football));
+      });
       const sportData = data[selected.sport];
       const info = sportData?.[selected.injury];
       if (!info) {
