@@ -302,3 +302,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Get references to modal and submit button
+const modal = document.getElementById("loginModal");
+const submitLogin = document.getElementById("submitLogin");
+
+if (submitLogin) {
+  submitLogin.addEventListener("click", () => {
+    const user = document.getElementById("username");
+    const pass = document.getElementById("password");
+    if (!user || !pass || !user.value || !pass.value) {
+      alert("Please fill in all fields");
+      return;
+    }
+    isLoggedIn = true; // Make sure 'isLoggedIn' is defined in your script
+    modal.classList.add("hidden");
+    alert("Login successful!");
+  });
+}
