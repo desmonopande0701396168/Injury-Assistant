@@ -253,3 +253,52 @@ function selectButton(btn, color) {
     btn.classList.add("btn-green");
   }
 }
+document.addEventListener("DOMContentLoaded", () => {
+  // Select your buttons by their IDs
+  const sportBtn = document.getElementById("sportBtn");
+  const injuryBtn = document.getElementById("injuryBtn");
+  const painBtn = document.getElementById("painBtn");
+  const mainBtn = document.getElementById("mainBtn");
+  const getAdviceBtn = document.getElementById("getAdviceBtn");
+  const loginBtn = document.getElementById("loginBtn");
+
+  // Verify that buttons are selected
+  console.log({ sportBtn, injuryBtn, painBtn, mainBtn, getAdviceBtn, loginBtn });
+
+  // Add click event listeners
+  if (sportBtn) {
+    sportBtn.addEventListener("click", () => {
+      alert("Sport button clicked!");
+    });
+  }
+
+  if (injuryBtn) {
+    injuryBtn.addEventListener("click", () => {
+      alert("Injury button clicked!");
+    });
+  }
+
+  if (painBtn) {
+    painBtn.addEventListener("click", () => {
+      alert("Pain button clicked!");
+    });
+  }
+
+  if (mainBtn) {
+    mainBtn.addEventListener("click", () => {
+      alert("Main button clicked!");
+    });
+  }
+
+  if (getAdviceBtn) {
+    getAdviceBtn.addEventListener("click", () => {
+      alert("Get Advice button clicked!");
+    });
+  }
+
+  if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      alert("Login button clicked!");
+    });
+  }
+});
