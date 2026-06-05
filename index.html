@@ -3,41 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sports Injury Hub</title>
+  <title>Sports Rehab System</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="hero">
+  <div class="overlay">
 
-  <nav>
-    <div class="logo-area">
-      <img src="desmonlogo1.jpg" class="logo">
-      <h2>SPORT HUB</h2>
+    <nav>
+      <div class="logo">
+        <img src="desmonlogo1.jpg">
+        <h2>SPORTS REHAB</h2>
+      </div>
+    </nav>
+
+    <div class="hero-text">
+      <h1>Recover Like a Professional Athlete</h1>
+      <p>Structured rehab plans for sports injuries</p>
     </div>
 
-    <div class="nav-links">
-      <a href="#analysis">Analysis</a>
-      <a href="#signin">Sign In</a>
-    </div>
-  </nav>
-
-  <div class="hero-text">
-    <h1>Train Smart. Recover Strong.</h1>
-    <p>Elite injury analysis for athletes</p>
-    <a href="#analysis" class="btn">Start Analysis</a>
   </div>
-
 </header>
 
-<section id="analysis" class="section">
+<section class="container">
 
-  <h2>Injury Analysis System</h2>
+  <h2>Injury Rehab System</h2>
 
   <div class="card">
 
-    <label>Sport</label>
     <select id="sport">
       <option>Football</option>
       <option>Volleyball</option>
@@ -46,7 +41,6 @@
       <option>Rugby</option>
     </select>
 
-    <label>Injury</label>
     <select id="injury">
       <option>Strain</option>
       <option>Sprain</option>
@@ -54,7 +48,13 @@
       <option>Fracture</option>
     </select>
 
-    <button class="btn" onclick="getAdvice()">Get Report</button>
+    <select id="level">
+      <option>Mild</option>
+      <option>Moderate</option>
+      <option>Severe</option>
+    </select>
+
+    <button onclick="getRehab()">Generate Rehab Plan</button>
 
   </div>
 
@@ -62,20 +62,6 @@
 
 </section>
 
-<section id="signin" class="section dark">
-
-  <h2>Player Sign In</h2>
-
-  <div class="card">
-
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-
-    <button class="btn secondary">Sign In</button>
-
-  </div>
-
-</section>
-
+<script src="script.js"></script>
 </body>
 </html>
