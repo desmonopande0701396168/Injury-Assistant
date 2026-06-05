@@ -1,55 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sports Injury Advisor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athlete Performance Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body style="background-image:url('desmon1.jpg')">
+<body>
 
-<nav>
-  <img src="desmonlogo1.jpg">
-  <div>
-    <a href="index.html">Home</a>
-    <a href="advice.html">Advice</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+<header class="top">
+
+  <div class="nav">
+    <div class="logo">ATHLETE HUB</div>
+
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#analysis">Injury Analysis</a>
+      <a href="#login">Sign In</a>
+    </div>
   </div>
-</nav>
 
-<div class="container">
-  <div class="card">
-    <h1>Sports Injury Advisor</h1>
-    <p>Professional injury prevention and recovery system.</p>
-    <a href="advice.html"><button class="btn">Get Started</button></a>
-  </div>
-</div>
+  <section class="hero" id="home">
+    <h1>Elite Sports Injury & Performance System</h1>
+    <p>Analyze injuries. Prevent damage. Improve recovery.</p>
+    <a href="#analysis" class="btn">Start Analysis</a>
+  </section>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Advice</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+</header>
 
-<body style="background-image:url('desmon2.jpg')">
+<!-- ANALYSIS -->
+<section class="section" id="analysis">
 
-<nav>
-  <img src="desmonlogo1.jpg">
-  <div>
-    <a href="index.html">Home</a>
-    <a href="advice.html">Advice</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
+  <h2>Injury Analysis Tool</h2>
 
-<div class="container">
+  <div class="panel">
 
-  <div class="card">
-    <h2>Select Sport</h2>
+    <label>Sport</label>
     <select id="sport">
       <option>Football</option>
       <option>Volleyball</option>
@@ -58,7 +45,7 @@
       <option>Rugby</option>
     </select>
 
-    <h2>Select Injury</h2>
+    <label>Injury Type</label>
     <select id="injury">
       <option>Strain</option>
       <option>Sprain</option>
@@ -66,74 +53,34 @@
       <option>Fracture</option>
     </select>
 
-    <button class="btn" onclick="getAdvice()">Get Advice</button>
+    <button onclick="getAdvice()">Generate Report</button>
+
   </div>
 
-  <div class="card" id="result">Results will appear here</div>
+  <div class="result" id="result">Your report will appear here...</div>
 
-</div>
+</section>
+
+<!-- SIGN IN -->
+<section class="login" id="login">
+
+  <h2>Member Access</h2>
+
+  <div class="panel">
+
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+
+    <button>Sign In</button>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Athlete Performance Hub
+</footer>
 
 <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>About</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body style="background-image:url('desmon3.jpg')">
-
-<nav>
-  <img src="desmonlogo1.jpg">
-  <div>
-    <a href="index.html">Home</a>
-    <a href="advice.html">Advice</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-<div class="container">
-  <div class="card">
-    <h2>About</h2>
-    <p>This system provides injury causes, prevention, recovery, and pain levels for athletes.</p>
-  </div>
-</div>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Contact</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body style="background-image:url('desmon4.jpg')">
-
-<nav>
-  <img src="desmonlogo1.jpg">
-  <div>
-    <a href="index.html">Home</a>
-    <a href="advice.html">Advice</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</nav>
-
-<div class="container">
-
-  <div class="card">
-    <h2>Contact</h2>
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <textarea placeholder="Message"></textarea>
-    <button class="btn">Send</button>
-  </div>
-
-</div>
-
 </body>
 </html>
