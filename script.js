@@ -1,47 +1,78 @@
-function getRehab() {
-  const sport = document.getElementById("sport").value;
-  const injury = document.getElementById("injury").value;
-  const level = document.getElementById("level").value;
+// PAGE NAVIGATION
+function showPage(pageId) {
+  let pages = document.querySelectorAll(".page");
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById(pageId).classList.add("active");
+}
 
-  let phase1 = [];
-  let phase2 = [];
-  let phase3 = [];
-  let time = "";
+// SLIDESHOW
+let images = ["img1.jpg", "img2.jpg", "img3.jpg"];
+let index = 0;
 
-  if (level === "Mild") {
-    time = "1–2 weeks";
-    phase1 = ["Rest", "Ice", "Light stretching"];
-    phase2 = ["Mobility exercises", "Light strength work"];
-    phase3 = ["Return to training gradually"];
+setInterval(() => {
+  index = (index + 1) % images.length;
+  document.getElementById("slideImage").src = images[index];
+}, 3000);
+
+// INJURY DATABASE
+const data = {
+  Football: {
+    Strain: {
+      causes: ["Overstretching", "Poor warm-up", "Fatigue", "Sudden sprint", "Muscle imbalance"],
+      prevention: ["Proper warm-up", "Stretching", "Strength training", "Rest", "Hydration"],
+      recovery: ["Ice therapy", "Rest", "Physiotherapy", "Light stretching", "Massage"]
+    }
   }
+};
 
-  if (level === "Moderate") {
-    time = "2–4 weeks";
-    phase1 = ["Rest", "Ice", "Compression", "Physio"];
-    phase2 = ["Strength training", "Balance work"];
-    phase3 = ["Controlled sport drills"];
-  }
+// DEFAULT CONTENT FOR ALL SPORTS (simplified reusable structure)
+function generateList(title, items) {
+  return `<h3>${title}</h3><ul>${items.map(i => `<li>${i}</li>`).join("")}</ul>`;
+}
 
-  if (level === "Severe") {
-    time = "4–8+ weeks";
-    phase1 = ["Medical treatment", "Immobilization", "Pain control"];
-    phase2 = ["Rehabilitation therapy", "Light movement"];
-    phase3 = ["Progressive sport training"];
-  }
+// ADVICE FUNCTION
+function getAdvice() {
+  let sport = document.getElementById("sportSelect").value;
+  let injury = document.getElementById("injurySelect").value;
+  let pain = document.getElementById("painLevel").value;
 
-  document.getElementById("result").innerHTML = `
+  const base = {
+    causes: [
+      "Overuse of muscles",
+      "Poor technique",
+      "Lack of warm-up",
+      "Fatigue",
+      "Contact impact"
+    ],
+    prevention: [
+      "Proper training",
+      "Warm-up before activity",
+      "Strength conditioning",
+      "Rest and recovery",
+      "Correct technique"
+    ],
+    recovery: [
+      "Rest",
+      "Ice application",
+      "Physiotherapy",
+      "Gradual return",
+      "Medical check-up"
+    ]
+  };
+
+  document.getElementById("resultBox").innerHTML = `
     <h2>${sport} - ${injury}</h2>
+    <p><b>Pain Level:</b> ${pain}/10</p>
 
-    <h3>Estimated Recovery Time</h3>
-    <p>${time}</p>
-
-    <h3>Phase 1</h3>
-    <ul>${phase1.map(i => `<li>${i}</li>`).join("")}</ul>
-
-    <h3>Phase 2</h3>
-    <ul>${phase2.map(i => `<li>${i}</li>`).join("")}</ul>
-
-    <h3>Phase 3</h3>
-    <ul>${phase3.map(i => `<li>${i}</li>`).join("")}</ul>
+    ${generateList("Causes", base.causes)}
+    ${generateList("Prevention", base.prevention)}
+    ${generateList("Recovery", base.recovery)}
   `;
+}
+
+// LOGIN (simple front-end)
+function loginUser(event) {
+  event.preventDefault();
+  document.getElementById("loginMsg").innerText =
+    "Login successful (demo mode - no backend connected)";
 }
