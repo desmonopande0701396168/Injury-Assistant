@@ -6,107 +6,129 @@
 }
 
 body {
-  background: #0a0f1c;
+  background: #0b1020;
   color: white;
 }
 
-/* NAV */
-.nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 60px;
-  background: rgba(0,0,0,0.6);
-  position: fixed;
-  width: 100%;
-}
-
-.logo {
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #00ff99;
-}
-
-.links a {
-  color: white;
-  margin-left: 20px;
-  text-decoration: none;
-}
-
-.links a:hover {
-  color: #00ff99;
-}
-
-/* HERO */
+/* HERO BACKGROUND USING YOUR IMAGE */
 .hero {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
               url("desmon1.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.hero h1 {
-  font-size: 45px;
-  max-width: 800px;
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
 }
 
-.hero p {
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid #00ff99;
+}
+
+.logo-area h2 {
+  color: #00ff99;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.nav-links a:hover {
+  color: #00ff99;
+}
+
+/* HERO TEXT */
+.hero-text {
+  text-align: center;
+  margin-top: 140px;
+}
+
+.hero-text h1 {
+  font-size: 52px;
+  font-weight: bold;
+}
+
+.hero-text p {
   margin-top: 10px;
   color: #cbd5e1;
 }
 
+/* BUTTONS (NEW PROFESSIONAL LOOK) */
 .btn {
   margin-top: 20px;
   padding: 12px 25px;
-  background: #00ff99;
+  background: linear-gradient(135deg, #00ff99, #00c2ff);
   border: none;
   color: black;
   font-weight: bold;
+  border-radius: 30px;
   cursor: pointer;
-  border-radius: 8px;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(0,255,153,0.3);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0,255,153,0.6);
 }
 
 /* SECTIONS */
-.section, .login {
-  padding: 80px 20px;
-  text-align: center;
+.section {
+  padding: 70px 20px;
+  max-width: 900px;
+  margin: auto;
 }
 
-.panel {
-  max-width: 500px;
-  margin: 30px auto;
-  background: #111827;
+.dark {
+  background: #0f172a;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.05);
   padding: 25px;
-  border-radius: 12px;
+  border-radius: 15px;
+  margin-top: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
+/* INPUTS */
 select, input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin: 10px 0;
-  border-radius: 6px;
-  border: none;
-}
-
-/* RESULT */
-.result {
-  margin-top: 20px;
-  padding: 20px;
-  background: #1f2937;
   border-radius: 10px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  border: none;
+  outline: none;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
+/* RESULT BOX */
+.result {
+  margin-top: 25px;
   padding: 20px;
-  background: #050814;
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
 }
+
+/* FOOTER LOOK (optional future) */
