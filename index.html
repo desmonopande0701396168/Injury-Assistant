@@ -3,38 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Athlete Performance Hub</title>
+  <title>Sports Injury Hub</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="top">
+<header class="hero">
 
-  <div class="nav">
-    <div class="logo">ATHLETE HUB</div>
-
-    <div class="links">
-      <a href="#home">Home</a>
-      <a href="#analysis">Injury Analysis</a>
-      <a href="#login">Sign In</a>
+  <nav>
+    <div class="logo-area">
+      <img src="desmonlogo1.jpg" class="logo">
+      <h2>SPORT HUB</h2>
     </div>
-  </div>
 
-  <section class="hero" id="home">
-    <h1>Elite Sports Injury & Performance System</h1>
-    <p>Analyze injuries. Prevent damage. Improve recovery.</p>
+    <div class="nav-links">
+      <a href="#analysis">Analysis</a>
+      <a href="#signin">Sign In</a>
+    </div>
+  </nav>
+
+  <div class="hero-text">
+    <h1>Train Smart. Recover Strong.</h1>
+    <p>Elite injury analysis for athletes</p>
     <a href="#analysis" class="btn">Start Analysis</a>
-  </section>
+  </div>
 
 </header>
 
-<!-- ANALYSIS -->
-<section class="section" id="analysis">
+<section id="analysis" class="section">
 
-  <h2>Injury Analysis Tool</h2>
+  <h2>Injury Analysis System</h2>
 
-  <div class="panel">
+  <div class="card">
 
     <label>Sport</label>
     <select id="sport">
@@ -45,7 +46,7 @@
       <option>Rugby</option>
     </select>
 
-    <label>Injury Type</label>
+    <label>Injury</label>
     <select id="injury">
       <option>Strain</option>
       <option>Sprain</option>
@@ -53,34 +54,28 @@
       <option>Fracture</option>
     </select>
 
-    <button onclick="getAdvice()">Generate Report</button>
+    <button class="btn" onclick="getAdvice()">Get Report</button>
 
   </div>
 
-  <div class="result" id="result">Your report will appear here...</div>
+  <div id="result" class="result"></div>
 
 </section>
 
-<!-- SIGN IN -->
-<section class="login" id="login">
+<section id="signin" class="section dark">
 
-  <h2>Member Access</h2>
+  <h2>Player Sign In</h2>
 
-  <div class="panel">
+  <div class="card">
 
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
 
-    <button>Sign In</button>
+    <button class="btn secondary">Sign In</button>
 
   </div>
 
 </section>
 
-<footer>
-  © 2026 Athlete Performance Hub
-</footer>
-
-<script src="script.js"></script>
 </body>
 </html>
