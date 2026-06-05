@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SportRehab Pro | Injury & Recovery Hub</title>
+  <title>Desmon Sports Rehab</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 
@@ -11,81 +11,109 @@
 
 <!-- NAVBAR -->
 <header>
-  <div class="logo">SportRehab Pro</div>
+  <div class="logo-area">
+    <img src="logo.png" alt="Logo" class="logo"/>
+    <h1>Desmon Sports Rehab</h1>
+  </div>
 
   <nav>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('about')">About</button>
-    <button onclick="showPage('advice')">Injury Advice</button>
-    <button onclick="showPage('signin')">Sign In</button>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#injury">Injury Advice</a>
+    <a href="#features">Features</a>
   </nav>
 </header>
 
-<!-- HOME -->
-<section id="home" class="page active">
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-overlay">
+    <h2>Recover Smarter. Play Stronger.</h2>
+    <p>Your personalized sports injury & rehabilitation assistant</p>
 
-  <div class="slideshow">
-    <img id="slideImage" src="img1.jpg" alt="sports image"/>
+    <div class="hero-buttons">
+      <button onclick="scrollToSection('injury')">Get Advice</button>
+      <button onclick="scrollToSection('about')">About Us</button>
+    </div>
   </div>
-
-  <h1>Welcome to Sport Rehabilitation Hub</h1>
-  <p>Improve performance, prevent injuries, and recover smarter.</p>
-
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="page">
-  <h1>About Us</h1>
-  <p>
-    We specialize in sports rehabilitation for football, volleyball, rugby, handball,
-    and swimming. Our goal is to help athletes prevent injuries and recover effectively.
-  </p>
+<section id="about" class="section">
+  <h2>About Us</h2>
+
+  <div class="about-box">
+    <img src="hero.jpg" alt="Founder Image"/>
+    <div>
+      <p>
+        Desmon Sports Rehab is dedicated to helping athletes prevent injuries,
+        recover faster, and return to peak performance safely.
+      </p>
+
+      <ul>
+        <li>✔ Injury Prevention Guidance</li>
+        <li>✔ Recovery Plans</li>
+        <li>✔ Sport-Specific Advice</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- INJURY ADVICE -->
-<section id="advice" class="page">
+<section id="injury" class="section">
+  <h2>Injury Advice System</h2>
 
-  <h1>Injury Advice System</h1>
+  <!-- SPORT SELECT -->
+  <div class="box">
+    <h3>Select Sport</h3>
+    <select id="sport">
+      <option value="">--Choose Sport--</option>
+      <option>Football</option>
+      <option>Rugby</option>
+      <option>Volleyball</option>
+      <option>Handball</option>
+      <option>Swimming</option>
+    </select>
+  </div>
 
-  <label>Choose Sport:</label>
-  <select id="sportSelect">
-    <option>Football</option>
-    <option>Volleyball</option>
-    <option>Rugby</option>
-    <option>Handball</option>
-  </select>
+  <!-- INJURY TYPE -->
+  <div class="box">
+    <h3>Select Injury</h3>
+    <select id="injuryType">
+      <option value="">--Choose Injury--</option>
+      <option>Sprain</option>
+      <option>Strain</option>
+      <option>Fracture</option>
+      <option>Dislocation</option>
+    </select>
+  </div>
 
-  <label>Injury Type:</label>
-  <select id="injurySelect">
-    <option>Strain</option>
-    <option>Sprain</option>
-    <option>Fracture</option>
-    <option>Dislocation</option>
-  </select>
+  <!-- PAIN LEVEL -->
+  <div class="box">
+    <h3>Pain Level</h3>
+    <input type="range" id="pain" min="1" max="10"/>
+  </div>
 
-  <label>Pain Level (1-10)</label>
-  <input type="number" id="painLevel" min="1" max="10"/>
+  <button class="main-btn" onclick="getAdvice()">Get Advice</button>
 
-  <button onclick="getAdvice()">Get Advice</button>
-
-  <div id="resultBox"></div>
-
+  <div id="result"></div>
 </section>
 
-<!-- SIGN IN -->
-<section id="signin" class="page">
+<!-- FEATURES -->
+<section id="features" class="section">
+  <h2>Features</h2>
 
-  <h1>Sign In</h1>
-
-  <form onsubmit="loginUser(event)">
-    <input type="text" placeholder="Username" required/>
-    <input type="password" placeholder="Password" required/>
-    <button type="submit">Login</button>
-  </form>
-
-  <p id="loginMsg"></p>
-
+  <div class="grid">
+    <div class="card">⚡ Fast Injury Analysis</div>
+    <div class="card">📊 Pain Level Detection</div>
+    <div class="card">🏃 Sport-Specific Recovery</div>
+    <div class="card">🧠 Prevention Tips</div>
+  </div>
 </section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Desmon Sports Rehab. All rights reserved.</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
